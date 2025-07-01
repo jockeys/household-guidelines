@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Blended Family: A Visual Guide to Harmony</title>
+    <title>Our Blended Family: Guidelines for Harmony</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Energetic & Playful -->
-    <!-- Application Structure Plan: A single-page, top-to-bottom scrolling infographic that tells a narrative story. It starts with the "why" (the challenge in blended families), moves to the "how" (the specific parental philosophies and frameworks), then details the "what" (the daily rules and routines presented in visually distinct, digestible cards and charts), and concludes with the parental commitment. This narrative flow is more engaging for an infographic than a tabbed or purely sectional layout, guiding the user through the creation of the family's new culture. -->
-    <!-- Visualization & Content Choices: 
-        - Blended Family Stat: Goal: Inform. Method: Single Big Number to create an impactful hook. Justification: Immediately establishes the context and importance of the guidelines.
-        - Parenting Styles: Goal: Organize/Compare. Method: HTML/CSS diagram resembling a Venn diagram. Justification: Visually represents the merging of Diana's and Josh's distinct styles into a unified approach, which is more powerful than text alone.
-        - Parenting Frameworks: Goal: Organize/Inform. Method: HTML/CSS cards with icons. Justification: Breaks down complex frameworks into key, memorable principles, improving scannability.
-        - Screen Time Rules: Goal: Compare. Method: Chart.js Bar Chart. Justification: Provides a clear, quantitative comparison of rules across different age groups, making the concept of "equitable, not equal" treatment tangible.
-        - Evening Routine: Goal: Change/Process. Method: HTML/CSS vertical timeline. Justification: Transforms a simple checklist into a dynamic, easy-to-follow process flow.
-        - Other Rules: Goal: Inform. Method: Icon-based lists within cards. Justification: Uses visual cues (Unicode icons) to quickly convey the topic of each rule, enhancing readability.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -32,6 +21,19 @@
         .palette-accent-yellow { background-color: #FFD166; }
         .palette-accent-green { background-color: #06D6A0; }
         .palette-accent-blue { background-color: #118AB2; }
+
+        .page {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+            opacity: 1;
+        }
+
         .chart-container {
             position: relative;
             width: 100%;
@@ -46,7 +48,8 @@
                 height: 300px;
             }
         }
-        .timeline::before {
+
+        .infographic-timeline::before {
             content: '';
             position: absolute;
             left: 1.25rem;
@@ -56,10 +59,10 @@
             background-color: #e5e7eb;
             border-radius: 2px;
         }
-        .timeline-item {
+        .infographic-timeline-item {
             position: relative;
         }
-        .timeline-dot {
+        .infographic-timeline-dot {
             position: absolute;
             left: 0;
             top: 50%;
@@ -72,217 +75,559 @@
             border-radius: 50%;
             border: 4px solid white;
         }
+
+        .interactive-sidebar-nav-item {
+            transition: all 0.2s ease-in-out;
+            border-left: 3px solid transparent;
+        }
+        .interactive-sidebar-nav-item.active, .interactive-sidebar-nav-item:hover {
+            background-color: #f8fafc;
+            border-left-color: #118AB2;
+            color: #073B4C;
+        }
+        .interactive-content-section {
+            display: none;
+        }
+        .interactive-content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .interactive-framework-card {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+        }
+        .interactive-framework-card .interactive-framework-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), padding 0.5s ease;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .interactive-framework-card.open .interactive-framework-content {
+            max-height: 1000px;
+            transition: max-height 1s cubic-bezier(1, 0, 1, 0), padding 0.5s ease;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .interactive-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #DCD7CF;
+        }
+        .interactive-timeline-item-dot {
+            position: absolute;
+            left: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            background-color: #FDFBF7;
+            border: 2px solid #DCD7CF;
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .interactive-timeline-item-dot span {
+            font-size: 10px;
+            font-weight: 600;
+            color: #A8A398;
+        }
     </style>
 </head>
 <body class="palette-text-dark">
 
-    <header class="palette-bg text-white text-center p-8 md:p-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold palette-text-light mb-2">Building Our Harmonious Home</h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto">A visual guide to unity, respect, and love in our blended family.</p>
-    </header>
-
-    <main class="container mx-auto p-4 md:p-8">
-
-        <section class="text-center my-12">
-            <h2 class="text-3xl font-bold mb-4">The Blended Family Journey</h2>
-            <p class="max-w-2xl mx-auto text-gray-600 mb-8">Creating a new family culture is a common challenge. In fact...</p>
-            <div class="bg-white p-8 rounded-2xl shadow-lg inline-block">
-                <div class="text-7xl font-extrabold palette-accent-blue text-white rounded-full w-40 h-40 flex items-center justify-center mx-auto">70%</div>
-                <p class="text-xl font-semibold mt-4">of blended families report disagreements<br>on parenting in the first two years.</p>
-                <p class="text-sm text-gray-500 mt-2">Source: Step Family Foundation, Inc.</p>
+    <!-- Infographic Section - Landing Page -->
+    <div id="infographic-page" class="page active">
+        <header class="palette-bg text-white text-center p-8 md:p-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold palette-text-light mb-2">Building Our Harmonious Home</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">A visual guide to unity, respect, and love in our blended family.</p>
+            <div class="mt-8">
+                <a href="#interactive-app-section" id="explore-interactive-btn" class="inline-block palette-accent-blue text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg">
+                    Explore Interactive Guidelines &#x27A1;
+                </a>
             </div>
-            <p class="max-w-2xl mx-auto text-gray-600 mt-8">That's why we—Diana and Josh—are building a unified approach, combining our strengths to create a stable, loving home for our five wonderful children.</p>
-        </section>
+        </header>
 
-        <section class="my-16">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Foundation: A Unified Team</h2>
-            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
-                    <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
-                        <h3 class="text-xl font-bold mb-2">Diana's Approach</h3>
-                        <p class="text-gray-600">Structure, Routine & Clarity</p>
-                        <p class="text-sm text-gray-500">(from a Colombian upbringing)</p>
-                    </div>
-                    <div class="text-5xl font-bold text-gray-300 mx-4">+</div>
-                    <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
-                        <h3 class="text-xl font-bold mb-2">Josh's Approach</h3>
-                        <p class="text-gray-600">Flexibility, Nurturing & Support</p>
-                         <p class="text-sm text-gray-500">(from a Pennsylvanian upbringing)</p>
-                    </div>
+        <main class="container mx-auto p-4 md:p-8">
+            <section class="text-center my-12">
+                <h2 class="text-3xl font-bold mb-4">The Blended Family Journey</h2>
+                <p class="max-w-2xl mx-auto text-gray-600 mb-8">Creating a new family culture is a common challenge. In fact...</p>
+                <div class="bg-white p-8 rounded-2xl shadow-lg inline-block">
+                    <div class="text-7xl font-extrabold palette-accent-blue text-white rounded-full w-40 h-40 flex items-center justify-center mx-auto">70%</div>
+                    <p class="text-xl font-semibold mt-4">of blended families report disagreements<br>on parenting in the first two years.</p>
+                    <p class="text-sm text-gray-500 mt-2">Source: Step Family Foundation, Inc.</p>
                 </div>
-                <div class="text-center text-5xl my-4 text-gray-300">&#x2193;</div>
-                <div class="palette-accent-green text-white p-6 rounded-2xl text-center">
-                    <h3 class="text-2xl font-bold">Our Combined Authoritative Style</h3>
-                    <p class="mt-2">Balancing warmth and responsiveness with clear, reasonable expectations to raise respectful, responsible, and secure children.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="my-16">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Parenting Toolkit</h2>
-            <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">We've adopted principles from three evidence-based frameworks to guide us. This gives us a shared playbook for responding to challenges consistently and effectively.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4">🔢</div>
-                    <h3 class="text-xl font-bold mb-2">1-2-3 Magic</h3>
-                    <p class="text-gray-600">For clear, non-emotional discipline. When a "Stop" behavior occurs, we calmly count. This reduces arguing and helps us stay consistent.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                    <div class="text-5xl mb-4">🤝</div>
-                    <h3 class="text-xl font-bold mb-2">Positive Discipline</h3>
-                    <p class="text-gray-600">To be "kind but firm." We focus on long-term solutions, mutual respect, and involving children in problem-solving.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                     <div class="text-5xl mb-4">💡</div>
-                    <h3 class="text-xl font-bold mb-2">Love & Logic</h3>
-                    <p class="text-gray-600">To empower kids through empathy and logical consequences. This teaches responsibility by linking choices to outcomes.</p>
-                </div>
-            </div>
-        </section>
+                <p class="max-w-2xl mx-auto text-gray-600 mt-8">That's why we—Diana and Josh—are building a unified approach, combining our strengths to create a stable, loving home for our five wonderful children.</p>
+            </section>
 
-        <section class="my-16">
-            <h2 class="text-3xl font-bold text-center mb-8">The Daily Blueprint: Rules & Routines</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                
+            <section class="my-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Our Foundation: A Unified Team</h2>
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-6">📱 Screen Time: Clear & Fair Limits</h3>
-                    <p class="text-gray-600 mb-4">Our screen time rules are based on child development needs. This is a great example of being "equitable, not equal." The goal is to prioritize play, reading, and family time.</p>
-                    <div class="chart-container">
-                        <canvas id="screenTimeChart"></canvas>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+                        <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
+                            <h3 class="text-xl font-bold mb-2">Diana's Approach</h3>
+                            <p class="text-gray-600">Structure, Routine & Clarity</p>
+                            <p class="text-sm text-gray-500">(from a Colombian upbringing)</p>
+                        </div>
+                        <div class="text-5xl font-bold text-gray-300 mx-4">+</div>
+                        <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
+                            <h3 class="text-xl font-bold mb-2">Josh's Approach</h3>
+                            <p class="text-gray-600">Flexibility, Nurturing & Support</p>
+                            <p class="text-sm text-gray-500">(from a Pennsylvanian upbringing)</p>
+                        </div>
+                    </div>
+                    <div class="text-center text-5xl my-4 text-gray-300">&#x2193;</div>
+                    <div class="palette-accent-green text-white p-6 rounded-2xl text-center">
+                        <h3 class="text-2xl font-bold">Our Combined Authoritative Style</h3>
+                        <p class="mt-2">Balancing warmth and responsiveness with clear, reasonable expectations to raise respectful, responsible, and secure children.</p>
                     </div>
                 </div>
-
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                     <h3 class="text-2xl font-bold mb-6">🌙 Evening Routine: Calm & Consistent</h3>
-                     <p class="text-gray-600 mb-6">Our wind-down sequence starts at 7:00 PM to ensure everyone is settled for an 8:00 PM bedtime. Predictability helps reduce resistance and improve sleep.</p>
-                     <div class="relative pl-12 timeline">
-                        <div class="timeline-item pb-8">
-                            <div class="timeline-dot palette-accent-yellow"><span class="text-2xl">🍽️</span></div>
-                            <h4 class="font-semibold text-lg">7:00 PM - Clean-Up</h4>
-                            <p class="text-gray-500">All kids help clear their dishes. Screens turn off for the night.</p>
-                        </div>
-                        <div class="timeline-item pb-8">
-                             <div class="timeline-dot palette-accent-red"><span class="text-2xl">🚿</span></div>
-                            <h4 class="font-semibold text-lg">7:15 PM - Hygiene Time</h4>
-                            <p class="text-gray-500">Showers/baths and brushing teeth.</p>
-                        </div>
-                         <div class="timeline-item pb-8">
-                            <div class="timeline-dot palette-accent-green"><span class="text-2xl">📖</span></div>
-                            <h4 class="font-semibold text-lg">7:45 PM - Wind-Down</h4>
-                            <p class="text-gray-500">Quiet time with books or puzzles. No screens!</p>
-                        </div>
-                         <div class="timeline-item">
-                             <div class="timeline-dot palette-accent-blue"><span class="text-2xl">😴</span></div>
-                            <h4 class="font-semibold text-lg">8:00 PM - Lights Out</h4>
-                            <p class="text-gray-500">Tuck-ins, cuddles, and goodnight wishes.</p>
-                        </div>
-                     </div>
+            </section>
+            
+            <section class="my-16">
+                <h2 class="text-3xl font-bold text-center mb-8">Our Parenting Toolkit</h2>
+                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">We've adopted principles from three evidence-based frameworks to guide us. This gives us a shared playbook for responding to challenges consistently and effectively.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                        <div class="text-5xl mb-4">🔢</div>
+                        <h3 class="text-xl font-bold mb-2">1-2-3 Magic</h3>
+                        <p class="text-gray-600">For clear, non-emotional discipline. When a "Stop" behavior occurs, we calmly count. This reduces arguing and helps us stay consistent.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-xl font-bold mb-2">Positive Discipline</h3>
+                        <p class="text-gray-600">To be "kind but firm." We focus on long-term solutions, mutual respect, and involving children in problem-solving.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
+                        <div class="text-5xl mb-4">💡</div>
+                        <h3 class="text-xl font-bold mb-2">Love & Logic</h3>
+                        <p class="text-gray-600">To empower kids through empathy and logical consequences. This teaches responsibility by linking choices to outcomes.</p>
+                    </div>
                 </div>
+            </section>
+
+            <section class="my-16">
+                <h2 class="text-3xl font-bold text-center mb-8">The Daily Blueprint: Rules & Routines</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">📱 Screen Time: Clear & Fair Limits</h3>
+                        <p class="text-gray-600 mb-4">Our screen time rules are based on recommendations to support healthy development. This is a great example of being "equitable, not equal." The goal is to prioritize play, reading, and family time.</p>
+                        <div class="chart-container">
+                            <canvas id="infographicScreenTimeChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">🌙 Evening Routine: Calm & Consistent</h3>
+                        <p class="text-gray-600 mb-6">Our wind-down sequence starts at 7:00 PM to ensure everyone is settled for an 8:00 PM bedtime. Predictability helps reduce resistance and improve sleep.</p>
+                        <div class="relative pl-12 infographic-timeline">
+                            <div class="infographic-timeline-item pb-8">
+                                <div class="infographic-timeline-dot palette-accent-yellow"><span class="text-2xl">🍽️</span></div>
+                                <h4 class="font-semibold text-lg">7:00 PM - Clean-Up</h4>
+                                <p class="text-gray-500">All kids help clear their dishes. Screens turn off for the night.</p>
+                            </div>
+                            <div class="infographic-timeline-item pb-8">
+                                <div class="infographic-timeline-dot palette-accent-red"><span class="text-2xl">🚿</span></div>
+                                <h4 class="font-semibold text-lg">7:15 PM - Hygiene Time</h4>
+                                <p class="text-gray-500">Showers/baths and brushing teeth.</p>
+                            </div>
+                            <div class="infographic-timeline-item pb-8">
+                                <div class="infographic-timeline-dot palette-accent-green"><span class="text-2xl">📖</span></div>
+                                <h4 class="font-semibold text-lg">7:45 PM - Wind-Down</h4>
+                                <p class="text-gray-500">Quiet time with books or puzzles. No screens!</p>
+                            </div>
+                            <div class="infographic-timeline-item">
+                                <div class="infographic-timeline-dot palette-accent-blue"><span class="text-2xl">😴</span></div>
+                                <h4 class="font-semibold text-lg">8:00 PM - Lights Out</h4>
+                                <p class="text-gray-500">Tuck-ins, cuddles, and goodnight wishes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">🍔 Mealtime Mantras</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl">🧘</span>
+                                <div>
+                                    <h4 class="font-semibold">No Pressure to Eat</h4>
+                                    <p class="text-gray-600">We provide healthy food; kids decide how much. No force-feeding.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl">🚫</span>
+                                <div>
+                                    <h4 class="font-semibold">Screen-Free Zone</h4>
+                                    <p class="text-gray-600">This rule is for everyone, adults included, to encourage family connection.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl">✨</span>
+                                <div>
+                                    <h4 class="font-semibold">Clean Up Your Space</h4>
+                                    <p class="text-gray-600">Everyone is responsible for clearing their own plate from the table.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-4">🧸 Toys & Property Rules</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl">🔒</span>
+                                <div>
+                                    <h4 class="font-semibold">Respect Personal Items</h4>
+                                    <p class="text-gray-600">Special toys don't have to be shared. Always ask permission first.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl">🔄</span>
+                                <div>
+                                    <h4 class="font-semibold">Practice Turn-Taking</h4>
+                                    <p class="text-gray-600">Toys in common areas are for everyone. We use timers if needed.</p>
+                                </div>
+                            </li>
+                                <li class="flex items-start gap-4">
+                                <span class="text-3xl">👶</span>
+                                <div>
+                                    <h4 class="font-semibold">The Toddler "Trade"</h4>
+                                    <p class="text-gray-600">To interact with our 18-month-old, older kids can offer to trade a toy instead of taking one.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="my-16 text-center">
+                <h2 class="text-3xl font-bold mb-8">Our Commitment as Partners</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="text-5xl mb-4">🤫</div>
+                        <h3 class="font-bold text-xl">Private Dialogue</h3>
+                        <p class="text-gray-600">We resolve disagreements away from the children to maintain a secure environment and our authority as a team.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg">
+                        <div class="text-5xl mb-4">❤️</div>
+                        <h3 class="font-bold text-xl">United Front</h3>
+                        <p class="text-gray-600">We always back each other up. We use "we" language to show the children we are in this together, always.</p>
+                    </div>
+                </div>
+                <div class="palette-bg text-white mt-8 p-6 rounded-2xl max-w-4xl mx-auto">
+                    <h3 class="font-bold text-xl palette-text-light">This is a Living Document</h3>
+                    <p class="mt-2">Our family will grow and change, and so will these guidelines. We commit to regular check-ins to make sure they always serve our family's best interests.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Interactive App Section -->
+    <div id="interactive-app-page" class="page">
+        <header class="palette-bg text-white text-center p-4 md:p-6 flex items-center justify-between">
+            <a href="#infographic-page" id="back-to-infographic-btn" class="inline-block text-white font-bold py-2 px-4 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
+                &#x2B05; Back to Infographic
+            </a>
+            <h2 class="text-2xl md:text-3xl font-bold palette-text-light flex-grow text-center">Our Interactive Household Guidelines</h2>
+            <div class="w-24 md:w-32"></div>
+        </header>
+        <div class="flex flex-col md:flex-row min-h-screen container mx-auto bg-white rounded-lg shadow-xl p-4 md:p-0 mt-8 md:mt-0">
+            <aside class="w-full md:w-64 bg-white p-4 md:p-6 rounded-lg md:rounded-none md:rounded-l-lg shadow-md md:shadow-none mb-8 md:mb-0 border-b md:border-b-0 md:border-r border-gray-200">
+                <h1 class="text-xl font-bold palette-text-dark mb-8 text-center hidden md:block">Family Guidelines</h1>
+                <nav id="interactive-sidebar-nav" class="space-y-2">
+                    <a href="#interactive-philosophy" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F496;</span> Our Philosophy
+                    </a>
+                    <a href="#interactive-toolkit" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F6E0;</span> Parenting Toolkit
+                    </a>
+                    <a href="#interactive-routines" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F552;</span> Daily Routines
+                    </a>
+                    <a href="#interactive-rules" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F4D6;</span> Household Rules
+                    </a>
+                    <a href="#interactive-partnership" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F91D;</span> Our Partnership
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+                <nav id="interactive-mobile-nav" class="flex justify-around p-2">
+                    <a href="#interactive-philosophy" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F496;</span><span class="text-center">Philosophy</span></a>
+                    <a href="#interactive-toolkit" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F6E0;</span><span class="text-center">Toolkit</span></a>
+                    <a href="#interactive-routines" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F552;</span><span class="text-center">Routines</span></a>
+                    <a href="#interactive-rules" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F4D6;</span><span class="text-center">Rules</span></a>
+                    <a href="#interactive-partnership" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F91D;</span><span class="text-center">Partners</span></a>
+                </nav>
+            </div>
+
+            <main class="flex-1 p-4 sm:p-6 md:p-8 pb-20 md:pb-8">
+                <section id="interactive-philosophy" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Philosophy: A Unified Front</h2>
+                    <p class="text-gray-600">This section outlines our core beliefs about creating a stable, loving, and consistent home. It's about blending our individual strengths—Diana's value for structure and Josh's nurturing flexibility—to create a unified parenting approach that benefits all our children.</p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">Harmonizing Our Parenting Styles</h3>
+                        <p class="mb-6 text-gray-600">Our strength lies in combining our unique perspectives. By understanding the cultural and personal backgrounds that shape our parenting styles, we can create a new, shared family culture built on empathy and respect.</p>
+                        <div class="grid md:grid-cols-3 gap-6 items-center">
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <h4 class="font-bold text-lg">Diana's Approach</h4>
+                                <p class="text-sm text-gray-600">(From Colombian Heritage)</p>
+                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
+                                    <li>Structure & Routine</li>
+                                    <li>Clear, Firm Rules</li>
+                                    <li>Healthy Habits</li>
+                                    <li>Tidiness</li>
+                                </ul>
+                            </div>
+                            <div class="text-center text-4xl text-gray-400 font-bold">+</div>
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <h4 class="font-bold text-lg">Josh's Approach</h4>
+                                <p class="text-sm text-gray-600">(From Pennsylvanian Roots)</p>
+                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
+                                    <li>Flexibility</li>
+                                    <li>Nurturing Care</li>
+                                    <li>Emotional Connection</li>
+                                    <li>Consistency through Support</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <span class="text-4xl text-gray-400">&#x2193;</span>
+                            <div class="mt-4 p-6 bg-blue-500 text-white rounded-lg">
+                                <h4 class="font-bold text-xl">Our Unified Authoritative Style</h4>
+                                <p class="mt-2">We balance warmth and responsiveness with clear, reasonable expectations. Our goal is to model teamwork and raise children who are respectful, responsible, and secure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">Fairness vs. Sameness</h3>
+                        <p class="text-gray-600">In our family, fairness means equitable treatment, not identical treatment. We recognize that our five children have different ages, needs, and developmental stages. Our rules and expectations will reflect this, with the reasons for any differences explained clearly and lovingly to the children. This approach ensures each child feels seen and understood, preventing feelings of favoritism and eliminating double standards.</p>
+                    </div>
+                </section>
                 
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-4">🍔 Mealtime Mantras</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-4">
-                            <span class="text-3xl">🧘</span>
-                            <div>
-                                <h4 class="font-semibold">No Pressure to Eat</h4>
-                                <p class="text-gray-600">We provide healthy food; kids decide how much. No force-feeding.</p>
+                <section id="interactive-toolkit" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Parenting Toolkit</h2>
+                    <p class="text-gray-600">Here are the evidence-based frameworks we've agreed to integrate. Think of these as our shared "playbook" for responding to challenges consistently and effectively. Click on each card to learn more about the core principles and techniques.</p>
+                    <div id="interactive-framework-container" class="space-y-4">
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">1-2-3 Magic</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-3xl">🚫</span>
-                             <div>
-                                <h4 class="font-semibold">Screen-Free Zone</h4>
-                                <p class="text-gray-600">This rule is for everyone, adults included, to encourage family connection.</p>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Simple, consistent discipline for "Stop" and "Start" behaviors.</p>
+                                <p>This provides a clear, non-emotional structure for managing unwanted behaviors like whining or arguing. It helps us remain calm and consistent.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Counting Technique:</strong> Calmly say "That's 1," "That's 2," then "That's 3" for stop behaviors.</li>
+                                    <li><strong>Consequence:</strong> After "3," implement a brief, pre-determined time-out (1 min per year of age) or removal of a privilege.</li>
+                                    <li><strong>No Arguing:</strong> The key is to avoid talking, yelling, or explaining during the counting process.</li>
+                                </ul>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-3xl">✨</span>
-                             <div>
-                                <h4 class="font-semibold">Clean Up Your Space</h4>
-                                <p class="text-gray-600">Everyone is responsible for clearing their own plate from the table.</p>
+                        </div>
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">Positive Discipline</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Fostering self-control, responsibility, and mutual respect.</p>
+                                <p>This approach is about being "kind and firm" at the same time. It builds long-term skills and strengthens our emotional connection with the children.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Kind and Firm:</strong> Set clear limits with respect and empathy.</li>
+                                    <li><strong>Family Meetings:</strong> Involve children in problem-solving and rule-setting.</li>
+                                    <li><strong>Focus on Solutions:</strong> Instead of punishment, we work together to find solutions to problems.</li>
+                                    <li><strong>Encouragement:</strong> Notice and praise effort and improvement, not just success.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">Love & Logic</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
+                            </div>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Empowering children through empathy and logical consequences.</p>
+                                <p>This framework teaches children responsibility by allowing them to experience the natural outcomes of their choices in a safe environment.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Empathy First:</strong> Always respond with empathy ("Oh man, that's a bummer...") before delivering a consequence.</li>
+                                    <li><strong>Logical Consequences:</strong> The consequence should be directly related to the misbehavior. (e.g., "If you don't put away your toys, you lose the privilege of playing with them tomorrow.")</li>
+                                    <li><strong>Offer Choices:</strong> Give children choices within limits we control. (e.g., "Do you want to wear your red pajamas or your blue ones?")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="interactive-routines" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Daily Routines</h2>
+                    <p class="text-gray-600">Consistent routines create predictability and security, helping our days run more smoothly. Here are our agreed-upon guidelines for mealtimes and evenings.</p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🍽️ Mealtime Expectations</h3>
+                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                            <li><strong>No Pressure:</strong> We provide healthy food; kids decide how much to eat. We won't force-feed. A simple, standard "backup" (like cereal or toast) is available if they genuinely dislike the meal.</li>
+                            <li><strong>One Meal for All:</strong> We do not act as short-order cooks.</li>
+                            <li><strong>Screen-Free Zone:</strong> No phones, tablets, or TV during meals for anyone, including adults.</li>
+                            <li><strong>Tidiness:</strong> Everyone is responsible for clearing their own plate and helping to wipe the table.</li>
+                            <li><strong>Positive Attitude:</strong> We don't complain about the food. If there's an issue, we discuss it calmly.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🌙 Evening Routine (8:00 PM Bedtime)</h3>
+                        <p class="text-gray-600 mb-6">Our evening routine is designed to be a calm, predictable transition to sleep. Consistency is key.</p>
+                        <div class="relative pl-8 interactive-timeline">
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>1</span></div>
+                                <h4 class="font-semibold">7:00 PM: Evening Prep</h4>
+                                <p class="text-sm text-gray-600">Dinner clean-up. All children help clear dishes. Screens are turned off for the night.</p>
+                            </div>
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>2</span></div>
+                                <h4 class="font-semibold">7:15 PM: Hygiene Time</h4>
+                                <p class="text-sm text-gray-600">Showers or baths, followed by putting on pajamas and brushing teeth.</p>
+                            </div>
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>3</span></div>
+                                <h4 class="font-semibold">7:45 PM: Wind-Down</h4>
+                                <p class="text-sm text-gray-600">Quiet, calm activities. Reading books, puzzles, drawing, or quiet conversation. Lights are dimmed.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="interactive-timeline-item-dot"><span>4</span></div>
+                                <h4 class="font-semibold">8:00 PM: Lights Out</h4>
+                                <p class="text-sm text-gray-600">Tuck-ins, cuddles, and consistent goodnight phrases. All children are in their beds for the night.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="interactive-rules" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Household Rules</h2>
+                    <p class="text-gray-600">Clear rules create a respectful and safe environment for everyone. These guidelines cover personal property and screen time, and are applied equitably based on age and developmental needs.</p>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🧸 Toys, Property & Shared Spaces</h3>
+                        <ul class="space-y-4 text-gray-600 list-disc list-inside">
+                            <li><strong>Personal Items:</strong> Children are not forced to share their special personal toys. Respect for ownership is taught. "If it's not yours, ask before you use it."</li>
+                            <li><strong>Communal Items:</strong> Toys in common areas are for everyone, and we practice turn-taking. Timers can be used if needed.</li>
+                            <li><strong>Toddler Interactions:</strong> For the 18-month-old, we use redirection ("That's sister's, let's play with this instead."). Older kids are taught to "trade" a toy if they want something the toddler has.</li>
+                            <li><strong>Clean-Up Rule:</strong> We clean up one activity before starting another. Everyone is responsible for putting their things away in common areas.</li>
+                            <li><strong>Privacy:</strong> We knock on closed bedroom doors before entering.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">📱 Screen Time Limits</h3>
+                        <p class="text-gray-600 mb-6">Our screen time rules are based on recommendations from the American Academy of Pediatrics to support healthy development. Hover over the bars for more details.</p>
+                        <div class="chart-container">
+                            <canvas id="interactiveScreenTimeChart"></canvas>
+                        </div>
+                    </div>
+                </section>
                 
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-4">🧸 Toys & Property Rules</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-4">
-                            <span class="text-3xl">🔒</span>
-                            <div>
-                                <h4 class="font-semibold">Respect Personal Items</h4>
-                                <p class="text-gray-600">Special toys don't have to be shared. Always ask permission first.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-3xl">🔄</span>
-                             <div>
-                                <h4 class="font-semibold">Practice Turn-Taking</h4>
-                                <p class="text-gray-600">Toys in common areas are for everyone. We use timers if needed.</p>
-                            </div>
-                        </li>
-                         <li class="flex items-start gap-4">
-                            <span class="text-3xl">👶</span>
-                             <div>
-                                <h4 class="font-semibold">The Toddler "Trade"</h4>
-                                <p class="text-gray-600">To interact with our 18-month-old, older kids can offer to trade a toy instead of taking one.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-         <section class="my-16 text-center">
-            <h2 class="text-3xl font-bold mb-8">Our Commitment as Partners</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                     <div class="text-5xl mb-4">🤫</div>
-                    <h3 class="font-bold text-xl">Private Dialogue</h3>
-                    <p class="text-gray-600">We resolve disagreements away from the children to maintain a secure environment and our authority as a team.</p>
-                </div>
-                <div class="bg-white p-6 rounded-2xl shadow-lg">
-                    <div class="text-5xl mb-4">❤️</div>
-                    <h3 class="font-bold text-xl">United Front</h3>
-                    <p class="text-gray-600">We always back each other up. We use "we" language to show the children we are in this together, always.</p>
-                </div>
-            </div>
-            <div class="palette-bg text-white mt-8 p-6 rounded-2xl max-w-4xl mx-auto">
-                 <h3 class="font-bold text-xl palette-text-light">This is a Living Document</h3>
-                 <p class="mt-2">Our family will grow and change, and so will these guidelines. We commit to regular check-ins to make sure they always serve our family's best interests.</p>
-            </div>
-        </section>
-        
-    </main>
+                <section id="interactive-partnership" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Partnership: The Foundation</h2>
+                    <p class="text-gray-600">Our strength as a couple is the foundation of our family's stability. These principles guide our interactions and decision-making, ensuring we operate as a supportive and unified team.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4">Shared Decision-Making</h3>
+                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                                <li><strong>United Front:</strong> We will always back each other up in front of the children. Disagreements are discussed and resolved in private.</li>
+                                <li><strong>Defined Roles:</strong> The biological parent takes the lead on discipline for their children, with the stepparent acting as a supportive ally.</li>
+                                <li><strong>Compromise:</strong> We commit to finding mutually agreeable solutions, blending our perspectives for the good of the whole family.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4">Conflict Resolution & Review</h3>
+                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                                <li><strong>Private Dialogue:</strong> All adult conflicts are handled away from the children to maintain our authority and their sense of security.</li>
+                                <li><strong>"I" Statements:</strong> We express our feelings without blame (e.g., "I feel frustrated when...").</li>
+                                <li><strong>Regular Check-ins:</strong> We will have weekly "alignment talks" to review what's working, discuss challenges, and adapt these guidelines as needed.</li>
+                                <li><strong>Living Document:</strong> These guidelines are not set in stone. We will revise them together as our children grow and our family evolves.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const screenTimeCtx = document.getElementById('screenTimeChart');
-            if (screenTimeCtx) {
-                const screenTimeData = {
+            const infographicPage = document.getElementById('infographic-page');
+            const interactiveAppPage = document.getElementById('interactive-app-page');
+            const exploreInteractiveBtn = document.getElementById('explore-interactive-btn');
+            const backToInfographicBtn = document.getElementById('back-to-infographic-btn');
+
+            function showPage(pageId) {
+                if (pageId === 'infographic-page') {
+                    infographicPage.classList.add('active');
+                    interactiveAppPage.classList.remove('active');
+                } else if (pageId === 'interactive-app-page') {
+                    infographicPage.classList.remove('active');
+                    interactiveAppPage.classList.add('active');
+                    // Ensure interactive app starts at philosophy section
+                    updateInteractiveNav('#interactive-philosophy');
+                }
+                window.scrollTo(0, 0);
+            }
+
+            exploreInteractiveBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('interactive-app-page');
+            });
+
+            backToInfographicBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage('infographic-page');
+            });
+
+            // Initial page load based on hash or default
+            if (window.location.hash === '#interactive-app-section') {
+                showPage('interactive-app-page');
+            } else {
+                showPage('infographic-page');
+            }
+
+            // --- Infographic Chart Logic ---
+            const infographicScreenTimeCtx = document.getElementById('infographicScreenTimeChart');
+            if (infographicScreenTimeCtx) {
+                const infographicScreenTimeData = {
                     labels: [['18-24 Months'], ['Ages 6-9']],
                     datasets: [{
                         label: 'Max Daily Screen Time (Hours)',
                         data: [1, 2],
                         backgroundColor: [
-                            '#FFD166', // yellow
-                            '#118AB2', // blue
+                            '#FFD166',
+                            '#118AB2',
                         ],
                         borderColor: [
-                             '#073B4C',
-                             '#073B4C'
+                            '#073B4C',
+                            '#073B4C'
                         ],
                         borderWidth: 2,
                         borderRadius: 8,
                     }]
                 };
 
-                new Chart(screenTimeCtx, {
+                new Chart(infographicScreenTimeCtx, {
                     type: 'bar',
-                    data: screenTimeData,
+                    data: infographicScreenTimeData,
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
@@ -302,7 +647,7 @@
                                         const item = tooltipItems[0];
                                         let label = item.chart.data.labels[item.dataIndex];
                                         if (Array.isArray(label)) {
-                                          return label.join(' ');
+                                            return label.join(' ');
                                         }
                                         return label;
                                     },
@@ -342,10 +687,151 @@
                                     display: false
                                 },
                                 ticks: {
-                                     font: {
+                                    font: {
                                         size: 14,
                                         weight: 'bold'
                                     }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- Interactive App Logic ---
+            const interactiveNavLinks = document.querySelectorAll('.interactive-sidebar-nav-item, .interactive-mobile-nav-item');
+            const interactiveContentSections = document.querySelectorAll('.interactive-content-section');
+            const interactiveMobileNavItems = document.querySelectorAll('.interactive-mobile-nav-item');
+
+            function updateInteractiveNav(hash) {
+                document.querySelectorAll('.interactive-sidebar-nav-item').forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                interactiveMobileNavItems.forEach(link => {
+                    const icon = link.querySelector('span:first-child');
+                    const text = link.querySelector('span:last-child');
+                    if (link.getAttribute('href') === hash) {
+                        link.style.color = '#073B4C';
+                        text.style.fontWeight = '600';
+                    } else {
+                        link.style.color = '#4F4A45';
+                        text.style.fontWeight = '400';
+                    }
+                });
+
+                interactiveContentSections.forEach(section => {
+                    if ('#' + section.id === hash) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                // Scroll to the top of the interactive app section when navigating within it
+                const interactiveAppSection = document.getElementById('interactive-app-page');
+                if (interactiveAppSection) {
+                    interactiveAppSection.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            function handleInteractiveNavigation(e) {
+                e.preventDefault();
+                const hash = e.currentTarget.getAttribute('href');
+                updateInteractiveNav(hash);
+            }
+
+            interactiveNavLinks.forEach(link => {
+                link.addEventListener('click', handleInteractiveNavigation);
+            });
+            
+            // Accordion for Parenting Toolkit in interactive app
+            const interactiveFrameworkCards = document.querySelectorAll('.interactive-framework-card');
+            interactiveFrameworkCards.forEach(card => {
+                const header = card.querySelector('.interactive-framework-header');
+                const icon = header.querySelector('span');
+                header.addEventListener('click', () => {
+                    const wasOpen = card.classList.contains('open');
+                    if (!wasOpen) {
+                        card.classList.add('open');
+                        icon.style.transform = 'rotate(90deg)';
+                    } else {
+                        card.classList.remove('open');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Chart.js for Screen Time in interactive app
+            const interactiveScreenTimeCtx = document.getElementById('interactiveScreenTimeChart');
+            if (interactiveScreenTimeCtx) {
+                const interactiveScreenTimeData = {
+                    labels: ['18-24 Months', 'Ages 6-9'],
+                    datasets: [{
+                        label: 'Max Recommended Daily Screen Time (Hours)',
+                        data: [1, 2],
+                        backgroundColor: [
+                            'rgba(168, 163, 152, 0.6)',
+                            'rgba(228, 213, 199, 0.8)',
+                        ],
+                        borderColor: [
+                            'rgb(168, 163, 152)',
+                            'rgb(228, 213, 199)',
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+
+                new Chart(interactiveScreenTimeCtx, {
+                    type: 'bar',
+                    data: interactiveScreenTimeData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: function(tooltipItems) {
+                                        const item = tooltipItems[0];
+                                        let label = item.chart.data.labels[item.dataIndex];
+                                        if (Array.isArray(label)) {
+                                            return label.join(' ');
+                                        }
+                                        return label;
+                                    },
+                                    afterBody: function(context) {
+                                        if (context[0].dataIndex === 0) {
+                                            return [
+                                                'Guideline: High-quality programming.',
+                                                'Parent must watch WITH the child.',
+                                                'No unsupervised media use.'
+                                            ];
+                                        } else if (context[0].dataIndex === 1) {
+                                            return [
+                                                'Priority: Outdoor play, reading, social time.',
+                                                'Content: Educational or creative focus.',
+                                                'Zones: Screen-free bedrooms & dining table.'
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Hours per Day'
+                                },
+                                ticks: {
+                                    stepSize: 0.5
                                 }
                             }
                         }
