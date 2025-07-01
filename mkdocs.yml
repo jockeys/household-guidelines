@@ -1,0 +1,50 @@
+site_name: '' # Removed the site name text as requested
+site_url: https://github.com/jockeys/household-guidelines/ # Replace with your actual GitHub Pages URL
+site_description: Comprehensive guidelines for a harmonious blended family.
+
+# Remove the explicit 'Home: index.md' from nav to avoid duplication in the top bar
+# MkDocs automatically treats index.md as the home page.
+nav:
+  # You can add other sections here if you had more Markdown files, e.g.:
+  # - Introduction: introduction.md
+  # - Guidelines: guidelines.md
+
+theme:
+  name: material
+  palette:
+    # Define the default light palette
+    - scheme: default
+      primary: 'deep orange' # A warm, inviting primary color for light mode
+      accent: 'light blue'   # A complementary accent color for light mode
+      toggle:
+        icon: material/brightness-7 # Icon for light mode (sun)
+        name: Switch to dark mode
+    # Define the dark palette
+    - scheme: slate
+      primary: 'deep orange' # Primary color for dark mode
+      accent: 'light blue'   # Accent color for dark mode
+      toggle:
+        icon: material/brightness-4 # Icon for dark mode (moon)
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+    - content.tabs.link
+    - navigation.instant # Added for smoother page transitions
+  icon:
+    logo: material/home # Using 'material/home' as previously discussed
+  # Disable breadcrumbs to remove the second "Home" link
+  breadcrumbs: false
+
+markdown_extensions:
+  - admonition # For callouts like notes, tips, etc.
+  - pymdownx.details # For expandable sections
+  - pymdownx.superfences # For improved code blocks
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list # For adding attributes to markdown elements
+  - md_in_html # Allows Markdown inside HTML blocks if needed
+
+plugins:
+  - search
