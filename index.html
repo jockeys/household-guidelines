@@ -10,106 +10,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Base colors (light mode defaults) */
-        :root {
-            --bg-color: #f8fafc;
-            --header-bg: #073B4C;
-            --header-text: #FFD166;
-            --main-text: #073B4C;
-            --card-bg: #ffffff;
-            --card-border: #e5e7eb;
-            --accent-red: #FF6B6B;
-            --accent-yellow: #FFD166;
-            --accent-green: #06D6A0;
-            --accent-blue: #118AB2;
-            --chart-bg-1: #FFD166;
-            --chart-bg-2: #118AB2;
-            --chart-border-1: #073B4C;
-            --chart-border-2: #073B4C;
-            --timeline-line: #e5e7eb;
-            --timeline-dot-border: #ffffff;
-            --button-text-light: #ffffff;
-            --button-text-dark: #073B4C;
-            --gray-text-500: #6b7280;
-            --gray-text-600: #4b5563;
-            --gray-text-800: #1f2937;
-            --gray-50: #f9fafb;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-        }
-
-        /* Dark mode colors */
-        body.dark-mode {
-            --bg-color: #1a202c; /* Darker background */
-            --header-bg: #2d3748; /* Darker header */
-            --header-text: #F6E05E; /* Brighter accent for dark mode header */
-            --main-text: #e2e8f0; /* Light text for dark mode */
-            --card-bg: #242a38; /* Darker card background */
-            --card-border: #4a5568; /* Darker card border */
-            --accent-red: #FC8181;
-            --accent-yellow: #F6E05E;
-            --accent-green: #68D391;
-            --accent-blue: #63B3ED;
-            --chart-bg-1: #F6E05E;
-            --chart-bg-2: #63B3ED;
-            --chart-border-1: #e2e8f0;
-            --chart-border-2: #e2e8f0;
-            --timeline-line: #4a5568;
-            --timeline-dot-border: #2d3748;
-            --button-text-light: #1a202c; /* Dark text on light buttons in dark mode */
-            --button-text-dark: #e2e8f0; /* Light text on dark buttons in dark mode */
-            --gray-text-500: #a0aec0;
-            --gray-text-600: #cbd5e0;
-            --gray-text-800: #f7fafc;
-            --gray-50: #242a38; /* Darker, consistent with card-bg */
-            --gray-200: #374151; /* Darker for borders */
-            --gray-300: #4a5568; /* Darker for borders */
-            --gray-400: #a0aec0;
-        }
-
-        /* Apply CSS variables */
+        /* Base styling for the entire page */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--main-text);
-            transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #f8fafc; /* Light background as per previous version */
+            color: #073B4C; /* Dark text for light mode */
         }
-        .palette-bg { background-color: var(--header-bg); }
-        .palette-text-light { color: var(--header-text); }
-        .palette-text-dark { color: var(--main-text); } /* Adjusted to use main-text */
-        .palette-accent-red { background-color: var(--accent-red); }
-        .palette-accent-yellow { background-color: var(--accent-yellow); }
-        .palette-accent-green { background-color: var(--accent-green); }
-        .palette-accent-blue { background-color: var(--accent-blue); }
+        /* Color palette definitions */
+        .palette-bg { background-color: #073B4C; } /* Dark blue for header */
+        .palette-text-light { color: #FFD166; } /* Yellow for header text */
+        .palette-text-dark { color: #073B4C; } /* Dark blue for main text */
+        .palette-accent-red { background-color: #FF6B6B; } /* Red accent */
+        .palette-accent-yellow { background-color: #FFD166; } /* Yellow accent */
+        .palette-accent-green { background-color: #06D6A0; } /* Green accent */
+        .palette-accent-blue { background-color: #118AB2; } /* Blue accent */
 
-        /* General element styling that should react to theme */
-        .bg-white { background-color: var(--card-bg); }
-        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
-        .border-2 { border-color: var(--card-border); }
-        .border-dashed { border-style: dashed; }
-        .border-gray-300 { border-color: var(--gray-300); }
-        .text-gray-600 { color: var(--gray-text-600); }
-        .text-gray-500 { color: var(--gray-text-500); }
-        .text-gray-300 { color: var(--gray-300); }
-        .text-gray-400 { color: var(--gray-400); }
-        .text-gray-800 { color: var(--gray-text-800); }
-        .bg-gray-50 { background-color: var(--gray-50); }
-        .border-gray-200 { border-color: var(--gray-200); }
-
-
+        /* Page display logic for switching between infographic and interactive sections */
         .page {
-            display: none;
+            display: none; /* Hide pages by default */
             width: 100%;
             min-height: 100vh;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.5s ease-in-out; /* Smooth transition when active */
         }
         .page.active {
-            display: block;
+            display: block; /* Show active page */
             opacity: 1;
         }
 
+        /* Chart container styling for responsiveness */
         .chart-container {
             position: relative;
             width: 100%;
@@ -125,14 +54,15 @@
             }
         }
 
+        /* Infographic timeline styling */
         .infographic-timeline::before {
             content: '';
             position: absolute;
-            left: 1.25rem;
+            left: 1.25rem; /* Position the vertical line */
             top: 0;
             bottom: 0;
             width: 4px;
-            background-color: var(--timeline-line);
+            background-color: #e5e7eb; /* Light gray line */
             border-radius: 2px;
         }
         .infographic-timeline-item {
@@ -142,76 +72,95 @@
             position: absolute;
             left: 0;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Center the dot on the line */
             width: 2.5rem;
             height: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 4px solid var(--timeline-dot-border);
+            border: 4px solid white; /* White border around the dot */
         }
 
-        /* Chart.js specific styling for dark mode */
-        body.dark-mode #infographicScreenTimeChart {
-            filter: invert(0.9) hue-rotate(180deg); /* Adjust for better visibility in dark mode */
-        }
-        body.dark-mode #interactiveScreenTimeChart {
-            filter: invert(0.9) hue-rotate(180deg); /* Adjust for better visibility in dark mode */
-        }
-
-        /* Dark/Light Mode Toggle Button */
-        #theme-toggle {
-            background-color: transparent;
-            border: 2px solid var(--header-text);
-            color: var(--header-text);
-            padding: 0.5rem 0.75rem;
-            border-radius: 9999px; /* Full rounded */
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        #theme-toggle:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        body.dark-mode #theme-toggle {
-            border-color: var(--header-text);
-            color: var(--header-text);
-        }
-
-        /* Interactive App Specifics (some already use vars, reinforcing) */
+        /* Interactive app sidebar navigation styling */
         .interactive-sidebar-nav-item {
             transition: all 0.2s ease-in-out;
-            border-left: 3px solid transparent;
-            color: var(--gray-text-600);
+            border-left: 3px solid transparent; /* Highlight active item */
         }
         .interactive-sidebar-nav-item.active, .interactive-sidebar-nav-item:hover {
-            background-color: var(--bg-color); /* Use general background for active state */
-            border-left-color: var(--accent-blue);
-            color: var(--main-text);
+            background-color: #f8fafc; /* Light background on hover/active */
+            border-left-color: #118AB2; /* Blue accent on hover/active */
+            color: #073B4C; /* Dark text on hover/active */
         }
+        /* Interactive app content sections display */
+        .interactive-content-section {
+            display: none; /* Hide content sections by default */
+        }
+        .interactive-content-section.active {
+            display: block; /* Show active content section */
+            animation: fadeIn 0.5s ease-in-out; /* Fade in animation */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Interactive app framework card styling (accordion) */
         .interactive-framework-card {
-            background-color: var(--gray-50);
-            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb; /* Light gray border */
         }
+        .interactive-framework-card .interactive-framework-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), padding 0.5s ease;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .interactive-framework-card.open .interactive-framework-content {
+            max-height: 1000px; /* Arbitrarily large to allow content to show */
+            transition: max-height 1s cubic-bezier(1, 0, 1, 0), padding 0.5s ease;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        /* Interactive app timeline styling */
         .interactive-timeline::before {
-            background-color: var(--gray-300);
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #DCD7CF; /* Light brown line */
         }
         .interactive-timeline-item-dot {
-            background-color: var(--card-bg);
-            border: 2px solid var(--gray-300);
+            position: absolute;
+            left: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 22px;
+            background-color: #FDFBF7; /* Off-white dot background */
+            border: 2px solid #DCD7CF; /* Light brown dot border */
+            border-radius: 50%;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .interactive-timeline-item-dot span {
-            color: var(--gray-400);
+            font-size: 10px;
+            font-weight: 600;
+            color: #A8A398; /* Grayish text inside dot */
         }
-        .text-blue-600 { /* For deep dive links */
-            color: var(--accent-blue);
+        /* Styling for deep dive links */
+        .deep-dive-link {
+            color: #118AB2; /* Blue color for links */
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .text-blue-600:hover {
+        .deep-dive-link:hover {
             text-decoration: underline;
+            color: #0E6C8E; /* Slightly darker blue on hover */
         }
     </style>
 </head>
@@ -219,17 +168,13 @@
 
     <!-- Infographic Section - Landing Page -->
     <div id="infographic-page" class="page active">
-        <header class="palette-bg text-white text-center p-8 md:p-12 flex flex-col items-center justify-center relative">
-            <button id="theme-toggle" class="absolute top-4 right-4 md:top-6 md:right-6">
-                <span id="theme-icon">☀️</span>
-                <span id="theme-text">Dark Mode</span>
-            </button>
+        <header class="palette-bg text-white text-center p-8 md:p-12">
             <h1 class="text-4xl md:text-5xl font-extrabold palette-text-light mb-2">Building Our Harmonious Home</h1>
             <p class="text-lg md:text-xl max-w-3xl mx-auto">A visual guide to unity, respect, and love in our blended family.</p>
             <div class="mt-8">
-                <!-- Link to the main MkDocs site at /report/ -->
-                <a href="report/" id="explore-interactive-btn" class="inline-block palette-accent-blue text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg">
-                    Explore Full Guidelines Report &#x27A1;
+                <!-- Link to the interactive guidelines section within this same HTML file -->
+                <a href="#" id="explore-interactive-btn" class="inline-block palette-accent-blue text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg">
+                    Explore Interactive Guidelines &#x27A1;
                 </a>
             </div>
         </header>
@@ -437,60 +382,287 @@
         </main>
     </div>
 
-    <!-- The interactive app section is now part of the MkDocs site (index.md) and its content/logic is no longer directly in this index.html -->
-    <!-- The previous interactive-app-page div and its contents have been removed from this file. -->
+    <!-- Interactive App Section -->
+    <div id="interactive-app-page" class="page">
+        <header class="palette-bg text-white text-center p-4 md:p-6 flex items-center justify-between">
+            <!-- Link back to the infographic section within this same HTML file -->
+            <a href="#" id="back-to-infographic-btn" class="inline-block text-white font-bold py-2 px-4 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
+                &#x2B05; Back to Infographic
+            </a>
+            <h2 class="text-2xl md:text-3xl font-bold palette-text-light flex-grow text-center">Our Interactive Household Guidelines</h2>
+            <div class="w-24 md:w-32"></div>
+        </header>
+        <div class="flex flex-col md:flex-row min-h-screen container mx-auto bg-white rounded-lg shadow-xl p-4 md:p-0 mt-8 md:mt-0">
+            <aside class="w-full md:w-64 bg-white p-4 md:p-6 rounded-lg md:rounded-none md:rounded-l-lg shadow-md md:shadow-none mb-8 md:mb-0 border-b md:border-b-0 md:border-r border-gray-200">
+                <h1 class="text-xl font-bold palette-text-dark mb-8 text-center hidden md:block">Family Guidelines</h1>
+                <nav id="interactive-sidebar-nav" class="space-y-2">
+                    <a href="#interactive-philosophy" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F496;</span> Our Philosophy
+                    </a>
+                    <a href="#interactive-toolkit" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F6E0;</span> Parenting Toolkit
+                    </a>
+                    <a href="#interactive-routines" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F552;</span> Daily Routines
+                    </a>
+                    <a href="#interactive-rules" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F4D6;</span> Household Rules
+                    </a>
+                    <a href="#interactive-partnership" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
+                        <span>&#x1F91D;</span> Our Partnership
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+                <nav id="interactive-mobile-nav" class="flex justify-around p-2">
+                    <a href="#interactive-philosophy" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F496;</span><span class="text-center">Philosophy</span></a>
+                    <a href="#interactive-toolkit" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F6E0;</span><span class="text-center">Toolkit</span></a>
+                    <a href="#interactive-routines" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F552;</span><span class="text-center">Routines</span></a>
+                    <a href="#interactive-rules" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F4D6;</span><span class="text-center">Rules</span></a>
+                    <a href="#interactive-partnership" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F91D;</span><span class="text-center">Partners</span></a>
+                </nav>
+            </div>
+
+            <main class="flex-1 p-4 sm:p-6 md:p-8 pb-20 md:pb-8">
+                <section id="interactive-philosophy" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Philosophy: A Unified Front</h2>
+                    <a href="report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <p class="text-gray-600">This section outlines our core beliefs about creating a stable, loving, and consistent home. It's about blending our individual strengths—Diana's value for structure and Josh's nurturing flexibility—to create a unified parenting approach that benefits all our children.</p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">Harmonizing Our Parenting Styles</h3>
+                        <p class="mb-6 text-gray-600">Our strength lies in combining our unique perspectives. By understanding the cultural and personal backgrounds that shape our parenting styles, we can create a new, shared family culture built on empathy and respect.</p>
+                        <div class="grid md:grid-cols-3 gap-6 items-center">
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <h4 class="font-bold text-lg">Diana's Approach</h4>
+                                <p class="text-sm text-gray-600">(From Colombian Heritage)</p>
+                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
+                                    <li>Structure & Routine</li>
+                                    <li>Clear, Firm Rules</li>
+                                    <li>Healthy Habits</li>
+                                    <li>Tidiness</li>
+                                </ul>
+                            </div>
+                            <div class="text-center text-4xl text-gray-400 font-bold">+</div>
+                            <div class="text-center p-4 bg-white rounded-lg">
+                                <h4 class="font-bold text-lg">Josh's Approach</h4>
+                                <p class="text-sm text-gray-600">(From Pennsylvanian Roots)</p>
+                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
+                                    <li>Flexibility</li>
+                                    <li>Nurturing Care</li>
+                                    <li>Emotional Connection</li>
+                                    <li>Consistency through Support</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <span class="text-4xl text-gray-400">&#x2193;</span>
+                            <div class="mt-4 p-6 bg-blue-500 text-white rounded-lg">
+                                <h4 class="font-bold text-xl">Our Unified Authoritative Style</h4>
+                                <p class="mt-2">We balance warmth and responsiveness with clear, reasonable expectations. Our goal is to model teamwork and raise children who are respectful, responsible, and secure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">Fairness vs. Sameness</h3>
+                        <p class="text-gray-600">In our family, fairness means equitable treatment, not identical treatment. We recognize that our five children have different ages, needs, and developmental stages. Our rules and expectations will reflect this, with the reasons for any differences explained clearly and lovingly to the children. This approach ensures each child feels seen and understood, preventing feelings of favoritism and eliminating double standards.</p>
+                    </div>
+                </section>
+
+                <section id="interactive-toolkit" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Parenting Toolkit</h2>
+                    <a href="report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <p class="text-gray-600">Here are the evidence-based frameworks we've agreed to integrate. Think of these as our shared "playbook" for responding to challenges consistently and effectively. Click on each card to learn more about the core principles and techniques.</p>
+                    <div id="interactive-framework-container" class="space-y-4">
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">1-2-3 Magic</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
+                            </div>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Simple, consistent discipline for "Stop" and "Start" behaviors.</p>
+                                <p>This provides a clear, non-emotional structure for managing unwanted behaviors like whining or arguing. It helps us remain calm and consistent.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Counting Technique:</strong> Calmly say "That's 1," "That's 2," then "That's 3" for stop behaviors.</li>
+                                    <li><strong>Consequence:</strong> After "3," implement a brief, pre-determined time-out (1 min per year of age) or removal of a privilege.</li>
+                                    <li><strong>No Arguing:</strong> The key is to avoid talking, yelling, or explaining during the counting process.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">Positive Discipline</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
+                            </div>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Fostering self-control, responsibility, and mutual respect.</p>
+                                <p>This approach is about being "kind and firm" at the same time. It builds long-term skills and strengthens our emotional connection with the children.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Kind and Firm:</strong> Set clear limits with respect and empathy.</li>
+                                    <li><strong>Family Meetings:</strong> Involve children in problem-solving and rule-setting.</li>
+                                    <li><strong>Focus on Solutions:</strong> Instead of punishment, we work together to find solutions to problems.</li>
+                                    <li><strong>Encouragement:</strong> Notice and praise effort and improvement, not just success.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
+                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
+                                <h3 class="text-xl font-semibold">Love & Logic</h3>
+                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
+                            </div>
+                            <div class="interactive-framework-content px-4 text-gray-600">
+                                <p class="font-medium text-gray-800 mb-2">Focus: Empowering children through empathy and logical consequences.</p>
+                                <p>This framework teaches children responsibility by allowing them to experience the natural outcomes of their choices in a safe environment.</p>
+                                <ul class="list-disc list-inside mt-2 space-y-1">
+                                    <li><strong>Empathy First:</strong> Always respond with empathy ("Oh man, that's a bummer...") before delivering a consequence.</li>
+                                    <li><strong>Logical Consequences:</strong> The consequence should be directly related to the misbehavior. (e.g., "If you don't put away your toys, you lose the privilege of playing with them tomorrow.")</li>
+                                    <li><strong>Offer Choices:</strong> Give children choices within limits we control. (e.g., "Do you want to wear your red pajamas or your blue ones?")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="interactive-routines" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Daily Routines</h2>
+                    <a href="report/#d-bedtime-and-evening-routines" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <p class="text-gray-600">Consistent routines create predictability and security, helping our days run more smoothly. Here are our agreed-upon guidelines for mealtimes and evenings.</p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🍽️ Mealtime Expectations</h3>
+                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
+                            <li><strong>No Pressure:</strong> We provide healthy food; kids decide how much to eat. We won't force-feed. A simple, standard "backup" (like cereal or toast) is available if they genuinely dislike the meal.</li>
+                            <li><strong>One Meal for All:</strong> We do not act as short-order cooks.</li>
+                            <li><strong>Screen-Free Zone:</strong> No phones, tablets, or TV during meals for anyone, including adults.</li>
+                            <li><strong>Tidiness:</strong> Everyone is responsible for clearing their own plate and helping to wipe the table.</li>
+                            <li><strong>Positive Attitude:</strong> We don't complain about the food. If there's an issue, we discuss it calmly.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🌙 Evening Routine (8:00 PM Bedtime)</h3>
+                        <p class="text-gray-600 mb-6">Our evening routine is designed to be a calm, predictable transition to sleep. Consistency is key.</p>
+                        <div class="relative pl-8 interactive-timeline">
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>1</span></div>
+                                <h4 class="font-semibold">7:00 PM: Evening Prep</h4>
+                                <p class="text-sm text-gray-600">Dinner clean-up. All children help clear dishes. Screens are turned off for the night.</p>
+                            </div>
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>2</span></div>
+                                <h4 class="font-semibold">7:15 PM: Hygiene Time</h4>
+                                <p class="text-sm text-gray-600">Showers or baths, followed by putting on pajamas and brushing teeth.</p>
+                            </div>
+                            <div class="relative pb-8">
+                                <div class="interactive-timeline-item-dot"><span>3</span></div>
+                                <h4 class="font-semibold">7:45 PM: Wind-Down</h4>
+                                <p class="text-sm text-gray-600">Quiet, calm activities. Reading books, puzzles, drawing, or quiet conversation. Lights are dimmed.</p>
+                            </div>
+                            <div class="relative">
+                                <div class="interactive-timeline-item-dot"><span>4</span></div>
+                                <h4 class="font-semibold">8:00 PM: Lights Out</h4>
+                                <p class="text-sm text-gray-600">Tuck-ins, cuddles, and consistent goodnight phrases. All children are in their beds for the night.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="interactive-rules" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Household Rules</h2>
+                    <a href="report/#iv-comprehensive-household-guidelines-key-areas" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <p class="text-gray-600">Clear rules create a respectful and safe environment for everyone. These guidelines cover personal property and screen time, and are applied equitably based on age and developmental needs.</p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">🧸 Toys, Property & Shared Spaces</h3>
+                        <ul class="space-y-4 text-gray-600 list-disc list-inside">
+                            <li><strong>Personal Items:</strong> Children are not forced to share their special personal toys. Respect for ownership is taught. "If it's not yours, ask before you use it."</li>
+                            <li><strong>Communal Items:</strong> Toys in common areas are for everyone, and we practice turn-taking. Timers can be used if needed.</li>
+                            <li><strong>Toddler Interactions:</strong> For the 18-month-old, we use redirection ("That's sister's, let's play with this instead."). Older kids are taught to "trade" a toy if they want what the toddler has.</li>
+                            <li><strong>Clean-Up Rule:</strong> We clean up one activity before starting another. Everyone is responsible for putting their things away in common areas.</li>
+                            <li><strong>Privacy:</strong> We knock on closed bedroom doors before entering.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="text-xl font-semibold mb-4">📱 Screen Time Limits</h3>
+                        <p class="text-gray-600 mb-6">Our screen time rules are based on recommendations from the American Academy of Pediatrics to support healthy development. Hover over the bars for more details.</p>
+                        <div class="chart-container">
+                            <canvas id="interactiveScreenTimeChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="interactive-partnership" class="interactive-content-section space-y-8">
+                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Partnership: The Foundation</h2>
+                    <a href="report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <p class="text-gray-600">Our strength as a couple is the foundation of our family's stability. These principles guide our interactions and decision-making, ensuring we operate as a supportive and unified team.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4">Shared Decision-Making</h3>
+                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                                <li><strong>United Front:</strong> We will always back each other up in front of the children. Disagreements are discussed and resolved in private.</li>
+                                <li><strong>Defined Roles:</strong> The biological parent takes the lead on discipline for their children, with the stepparent acting as a supportive ally.</li>
+                                <li><strong>Compromise:</strong> We commit to finding mutually agreeable solutions, blending our perspectives for the good of the whole family.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="text-xl font-semibold mb-4">Conflict Resolution & Review</h3>
+                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
+                                <li><strong>Private Dialogue:</strong> All adult conflicts are handled away from the children to maintain our authority and their sense of security.</li>
+                                <li><strong>"I" Statements:</strong> We express our feelings without blame (e.g., "I feel frustrated when...").</li>
+                                <li><strong>Regular Check-ins:</strong> We will have weekly "alignment talks" to review what's working, discuss challenges, and adapt these guidelines as needed.</li>
+                                <li><strong>Living Document:</strong> These guidelines are not set in stone. We will revise them together as our children grow and our family evolves.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const infographicPage = document.getElementById('infographic-page');
-            // const interactiveAppPage = document.getElementById('interactive-app-page'); // No longer in this file
+            const interactiveAppPage = document.getElementById('interactive-app-page');
             const exploreInteractiveBtn = document.getElementById('explore-interactive-btn');
-            // const backToInfographicBtn = document.getElementById('back-to-infographic-btn'); // No longer in this file
+            const backToInfographicBtn = document.getElementById('back-to-infographic-btn');
 
-            // Theme Toggle Logic
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
-            const themeText = document.getElementById('theme-text');
-
-            // Function to set the theme
-            function setTheme(theme) {
-                if (theme === 'dark') {
-                    document.body.classList.add('dark-mode');
-                    themeIcon.textContent = '🌙'; // Moon icon
-                    themeText.textContent = 'Light Mode';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.body.classList.remove('dark-mode');
-                    themeIcon.textContent = '☀️'; // Sun icon
-                    themeText.textContent = 'Dark Mode';
-                    localStorage.setItem('theme', 'light');
+            // Function to show a specific page (infographic or interactive app)
+            function showPage(pageId) {
+                if (pageId === 'infographic-page') {
+                    infographicPage.classList.add('active');
+                    interactiveAppPage.classList.remove('active');
+                } else if (pageId === 'interactive-app-page') {
+                    infographicPage.classList.remove('active');
+                    interactiveAppPage.classList.add('active');
+                    // Ensure interactive app starts at philosophy section when navigated to
+                    updateInteractiveNav('#interactive-philosophy');
                 }
+                window.scrollTo(0, 0); // Scroll to top when switching pages
             }
 
-            // Check for saved theme preference on load
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                setTheme(savedTheme);
-            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                // If no saved theme, check system preference
-                setTheme('dark');
-            } else {
-                setTheme('light'); // Default to light mode
-            }
-
-            // Toggle theme on button click
-            themeToggle.addEventListener('click', () => {
-                if (document.body.classList.contains('dark-mode')) {
-                    setTheme('light');
-                } else {
-                    setTheme('dark');
-                }
+            // Event listener for "Explore Interactive Guidelines" button
+            exploreInteractiveBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                showPage('interactive-app-page'); // Switch to interactive app page
             });
 
-            // No longer need showPage or the interactive app JS here as it's separate now.
-            // Keeping chart logic as it's part of the infographic itself.
+            // Event listener for "Back to Infographic" button
+            backToInfographicBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                showPage('infographic-page'); // Switch back to infographic page
+            });
 
-            // --- Infographic Chart Logic ---
+            // Initial page load based on URL hash or default to infographic
+            if (window.location.hash === '#interactive-app-section') {
+                showPage('interactive-app-page');
+            } else {
+                showPage('infographic-page');
+            }
+
+            // --- Infographic Chart Logic (for the landing page) ---
             const infographicScreenTimeCtx = document.getElementById('infographicScreenTimeChart');
             if (infographicScreenTimeCtx) {
                 const infographicScreenTimeData = {
@@ -499,12 +671,12 @@
                         label: 'Max Daily Screen Time (Hours)',
                         data: [1, 2],
                         backgroundColor: [
-                            'var(--chart-bg-1)',
-                            'var(--chart-bg-2)',
+                            '#FFD166', // Yellow
+                            '#118AB2', // Blue
                         ],
                         borderColor: [
-                            'var(--chart-border-1)',
-                            'var(--chart-border-2)'
+                            '#073B4C', // Dark Blue
+                            '#073B4C' // Dark Blue
                         ],
                         borderWidth: 2,
                         borderRadius: 8,
@@ -517,14 +689,14 @@
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        indexAxis: 'y',
+                        indexAxis: 'y', // Horizontal bars
                         plugins: {
                             legend: {
-                                display: false
+                                display: false // Hide legend
                             },
                             tooltip: {
                                 enabled: true,
-                                backgroundColor: 'var(--header-bg)',
+                                backgroundColor: '#073B4C', // Dark blue tooltip background
                                 titleFont: { weight: 'bold' },
                                 bodyFont: { size: 12 },
                                 displayColors: false,
@@ -538,6 +710,7 @@
                                         return label;
                                     },
                                     afterBody: function(context) {
+                                        // Custom text for tooltips based on data index
                                         if (context[0].dataIndex === 0) {
                                             return [
                                                 'Guideline: High-quality programs only.',
@@ -562,25 +735,180 @@
                                     font: {
                                         size: 14,
                                         weight: 'bold',
-                                        color: 'var(--main-text)' // Ensure chart text changes color
+                                        color: '#073B4C' // Dark blue text for x-axis title
                                     }
                                 },
                                 ticks: {
                                     stepSize: 0.5,
-                                    color: 'var(--main-text)' // Ensure chart ticks change color
+                                    color: '#073B4C' // Dark blue text for x-axis ticks
                                 }
                             },
                             y: {
                                 grid: {
-                                    display: false
+                                    display: false // Hide y-axis grid lines
                                 },
                                 ticks: {
                                     font: {
                                         size: 14,
                                         weight: 'bold',
-                                        color: 'var(--main-text)' // Ensure chart ticks change color
+                                        color: '#073B4C' // Dark blue text for y-axis ticks
                                     },
-                                    color: 'var(--main-text)' // Ensure chart ticks change color
+                                    color: '#073B4C' // Dark blue text for y-axis ticks
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // --- Interactive App Logic (for the internal app section) ---
+            const interactiveNavLinks = document.querySelectorAll('.interactive-sidebar-nav-item, .interactive-mobile-nav-item');
+            const interactiveContentSections = document.querySelectorAll('.interactive-content-section');
+            const interactiveMobileNavItems = document.querySelectorAll('.interactive-mobile-nav-item');
+
+            // Function to update the active navigation link and show the corresponding content section
+            function updateInteractiveNav(hash) {
+                // Update sidebar navigation active state
+                document.querySelectorAll('.interactive-sidebar-nav-item').forEach(link => {
+                    if (link.getAttribute('href') === hash) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+
+                // Update mobile navigation styling
+                interactiveMobileNavItems.forEach(link => {
+                    const icon = link.querySelector('span:first-child');
+                    const text = link.querySelector('span:last-child');
+                    if (link.getAttribute('href') === hash) {
+                        link.style.color = '#073B4C'; // Dark blue for active mobile nav item
+                        text.style.fontWeight = '600'; // Bold text for active mobile nav item
+                    } else {
+                        link.style.color = '#4F4A45'; // Gray for inactive mobile nav item
+                        text.style.fontWeight = '400'; // Normal text for inactive mobile nav item
+                    }
+                });
+
+                // Show/hide content sections
+                interactiveContentSections.forEach(section => {
+                    if ('#' + section.id === hash) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                // Scroll to the top of the interactive app section when navigating within it
+                const interactiveAppSection = document.getElementById('interactive-app-page');
+                if (interactiveAppSection) {
+                    interactiveAppSection.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+
+            // Event handler for interactive navigation links
+            function handleInteractiveNavigation(e) {
+                e.preventDefault(); // Prevent default link behavior
+                const hash = e.currentTarget.getAttribute('href');
+                updateInteractiveNav(hash); // Update navigation and content
+            }
+
+            // Add event listeners to all interactive navigation links
+            interactiveNavLinks.forEach(link => {
+                link.addEventListener('click', handleInteractiveNavigation);
+            });
+
+            // Accordion functionality for Parenting Toolkit cards
+            const interactiveFrameworkCards = document.querySelectorAll('.interactive-framework-card');
+            interactiveFrameworkCards.forEach(card => {
+                const header = card.querySelector('.interactive-framework-header');
+                const icon = header.querySelector('span');
+                header.addEventListener('click', () => {
+                    const wasOpen = card.classList.contains('open');
+                    // Close all other open cards first
+                    interactiveFrameworkCards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains('open')) {
+                            otherCard.classList.remove('open');
+                            otherCard.querySelector('.interactive-framework-header span').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    // Toggle current card
+                    if (!wasOpen) {
+                        card.classList.add('open');
+                        icon.style.transform = 'rotate(90deg)';
+                    } else {
+                        card.classList.remove('open');
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Chart.js for Screen Time in interactive app
+            const interactiveScreenTimeCtx = document.getElementById('interactiveScreenTimeChart');
+            if (interactiveScreenTimeCtx) {
+                const interactiveScreenTimeData = {
+                    labels: ['18-24 Months', 'Ages 6-9'],
+                    datasets: [{
+                        label: 'Max Recommended Daily Screen Time (Hours)',
+                        data: [1, 2],
+                        backgroundColor: [
+                            'rgba(168, 163, 152, 0.6)', // Grayish color
+                            'rgba(228, 213, 199, 0.8)', // Lighter grayish color
+                        ],
+                        borderColor: [
+                            'rgb(168, 163, 152)',
+                            'rgb(228, 213, 199)',
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+
+                new Chart(interactiveScreenTimeCtx, {
+                    type: 'bar',
+                    data: interactiveScreenTimeData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: function(tooltipItems) {
+                                        const item = tooltipItems[0];
+                                        let label = item.chart.data.labels[item.dataIndex];
+                                        if (Array.isArray(label)) {
+                                            return label.join(' ');
+                                        }
+                                        return label;
+                                    },
+                                    afterBody: function(context) {
+                                        if (context[0].dataIndex === 0) {
+                                            return [
+                                                'Guideline: High-quality programming.',
+                                                'Parent must watch WITH the child.',
+                                                'No unsupervised media use.'
+                                            ];
+                                        } else if (context[0].dataIndex === 1) {
+                                            return [
+                                                'Priority: Outdoor play, reading, social time.',
+                                                'Content: Educational or creative focus.',
+                                                'Zones: Screen-free bedrooms & dining table.'
+                                            ];
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Hours per Day'
+                                },
+                                ticks: {
+                                    stepSize: 0.5
                                 }
                             }
                         }
