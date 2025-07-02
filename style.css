@@ -1,20 +1,91 @@
-/* Base styling for the entire page */
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* Light background as per previous version */
-    color: #073B4C; /* Dark text for light mode */
+/* Base colors (light mode defaults) */
+:root {
+    --bg-color: #f8fafc;
+    --header-bg: #073B4C;
+    --header-text: #FFD166;
+    --main-text: #073B4C;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --accent-red: #FF6B6B;
+    --accent-yellow: #FFD166;
+    --accent-green: #06D6A0;
+    --accent-blue: #118AB2;
+    --chart-bg-1: #FFD166;
+    --chart-bg-2: #118AB2;
+    --chart-border-1: #073B4C;
+    --chart-border-2: #073B4C;
+    --timeline-line: #e5e7eb;
+    --timeline-dot-border: #ffffff;
+    --button-text-light: #ffffff;
+    --button-text-dark: #073B4C;
+    --gray-text-500: #6b7280;
+    --gray-text-600: #4b5563;
+    --gray-text-800: #1f2937;
+    --gray-50: #f9fafb;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
 }
 
-/* Color palette definitions */
-.palette-bg { background-color: #073B4C; } /* Dark blue for header */
-.palette-text-light { color: #FFD166; } /* Yellow for header text */
-.palette-text-dark { color: #073B4C; } /* Dark blue for main text */
-.palette-accent-red { background-color: #FF6B6B; } /* Red accent */
-.palette-accent-yellow { background-color: #FFD166; } /* Yellow accent */
-.palette-accent-green { background-color: #06D6A0; } /* Green accent */
-.palette-accent-blue { background-color: #118AB2; } /* Blue accent */
+/* Dark mode colors */
+body.dark-mode {
+    --bg-color: #1a202c; /* Darker background */
+    --header-bg: #2d3748; /* Darker header */
+    --header-text: #F6E05E; /* Brighter accent for dark mode header */
+    --main-text: #e2e8f0; /* Light text for dark mode */
+    --card-bg: #242a38; /* Darker card background */
+    --card-border: #4a5568; /* Darker card border */
+    --accent-red: #FC8181;
+    --accent-yellow: #F6E05E;
+    --accent-green: #68D391;
+    --accent-blue: #63B3ED;
+    --chart-bg-1: #F6E05E;
+    --chart-bg-2: #63B3ED;
+    --chart-border-1: #e2e8f0;
+    --chart-border-2: #e2e8f0;
+    --timeline-line: #4a5568;
+    --timeline-dot-border: #2d3748;
+    --button-text-light: #1a202c; /* Dark text on light buttons in dark mode */
+    --button-text-dark: #e2e8f0; /* Light text on dark buttons in dark mode */
+    --gray-text-500: #a0aec0;
+    --gray-text-600: #cbd5e0;
+    --gray-text-800: #f7fafc;
+    --gray-50: #242a38; /* Darker, consistent with card-bg */
+    --gray-200: #374151; /* Darker for borders */
+    --gray-300: #4a5568; /* Darker for borders */
+    --gray-400: #a0aec0;
+}
 
-/* Page display logic for switching between infographic and interactive sections */
+/* Apply CSS variables and transitions */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--main-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.palette-bg { background-color: var(--header-bg); }
+.palette-text-light { color: var(--header-text); }
+.palette-text-dark { color: var(--main-text); }
+.palette-accent-red { background-color: var(--accent-red); }
+.palette-accent-yellow { background-color: var(--accent-yellow); }
+.palette-accent-green { background-color: var(--accent-green); }
+.palette-accent-blue { background-color: var(--accent-blue); }
+
+/* General element styling that should react to theme */
+.bg-white { background-color: var(--card-bg); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+.border-2 { border-color: var(--card-border); }
+.border-dashed { border-style: dashed; }
+.border-gray-300 { border-color: var(--gray-300); }
+.text-gray-600 { color: var(--gray-text-600); }
+.text-gray-500 { color: var(--gray-text-500); }
+.text-gray-300 { color: var(--gray-300); }
+.text-gray-400 { color: var(--gray-400); }
+.text-gray-800 { color: var(--gray-text-800); }
+.bg-gray-50 { background-color: var(--gray-50); }
+.border-gray-200 { border-color: var(--gray-200); }
+
+
 .page {
     display: none; /* Hide pages by default */
     width: 100%;
@@ -51,7 +122,7 @@ body {
     top: 0;
     bottom: 0;
     width: 4px;
-    background-color: #e5e7eb; /* Light gray line */
+    background-color: var(--timeline-line); /* Light gray line */
     border-radius: 2px;
 }
 .infographic-timeline-item {
@@ -68,18 +139,48 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 4px solid white; /* White border around the dot */
+    border: 4px solid var(--timeline-dot-border); /* White border around the dot */
+}
+
+/* Chart.js specific styling for dark mode */
+/* Invert filter is a quick way to make charts readable, but might affect colors */
+body.dark-mode #infographicScreenTimeChart,
+body.dark-mode #interactiveScreenTimeChart {
+    filter: invert(0.9) hue-rotate(180deg);
+}
+
+/* Dark/Light Mode Toggle Button */
+#theme-toggle {
+    background-color: transparent;
+    border: 2px solid var(--header-text);
+    color: var(--header-text);
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px; /* Full rounded */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+body.dark-mode #theme-toggle {
+    border-color: var(--header-text);
+    color: var(--header-text);
 }
 
 /* Interactive app sidebar navigation styling */
 .interactive-sidebar-nav-item {
     transition: all 0.2s ease-in-out;
     border-left: 3px solid transparent; /* Highlight active item */
+    color: var(--gray-text-600);
 }
 .interactive-sidebar-nav-item.active, .interactive-sidebar-nav-item:hover {
-    background-color: #f8fafc; /* Light background on hover/active */
-    border-left-color: #118AB2; /* Blue accent on hover/active */
-    color: #073B4C; /* Dark text on hover/active */
+    background-color: var(--gray-50); /* Use gray-50 for active state */
+    border-left-color: var(--accent-blue); /* Blue accent on hover/active */
+    color: var(--main-text); /* Main text color on hover/active */
 }
 /* Interactive app content sections display */
 .interactive-content-section {
@@ -95,8 +196,9 @@ body {
 }
 /* Interactive app framework card styling (accordion) */
 .interactive-framework-card {
-    transition: all 0.3s ease-in-out;
-    border: 1px solid #e5e7eb; /* Light gray border */
+    background-color: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .interactive-framework-card .interactive-framework-content {
     max-height: 0;
@@ -119,7 +221,7 @@ body {
     top: 0;
     bottom: 0;
     width: 2px;
-    background-color: #DCD7CF; /* Light brown line */
+    background-color: var(--gray-300);
 }
 .interactive-timeline-item-dot {
     position: absolute;
@@ -128,27 +230,27 @@ body {
     transform: translateY(-50%);
     width: 22px;
     height: 22px;
-    background-color: #FDFBF7; /* Off-white dot background */
-    border: 2px solid #DCD7CF; /* Light brown dot border */
+    background-color: var(--card-bg);
+    border: 2px solid var(--gray-300);
     border-radius: 50%;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 .interactive-timeline-item-dot span {
     font-size: 10px;
     font-weight: 600;
-    color: #A8A398; /* Grayish text inside dot */
+    color: var(--gray-400);
 }
 /* Styling for deep dive links */
 .deep-dive-link {
-    color: #118AB2; /* Blue color for links */
+    color: var(--accent-blue);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 .deep-dive-link:hover {
     text-decoration: underline;
-    color: #0E6C8E; /* Slightly darker blue on hover */
+    color: var(--accent-blue); /* Keep consistent hover color */
 }
-

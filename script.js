@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const interactiveAppPage = document.getElementById('interactive-app-page');
     const exploreInteractiveBtn = document.getElementById('explore-interactive-btn');
     const backToInfographicBtn = document.getElementById('back-to-infographic-btn');
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
 
     // Function to show a specific page (infographic or interactive app)
     function showPage(pageId) {
@@ -17,6 +20,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         window.scrollTo(0, 0); // Scroll to top when switching pages
     }
+
+    // Function to set the theme (light or dark)
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.textContent = '🌙'; // Moon icon for dark mode
+            themeText.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.remove('dark-mode');
+            themeIcon.textContent = '☀️'; // Sun icon for light mode
+            themeText.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+        // Re-render charts to apply new theme colors if they use CSS variables
+        if (window.infographicChart) window.infographicChart.update();
+        if (window.interactiveChart) window.interactiveChart.update();
+    }
+
+    // Check for saved theme preference on load, or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+    } else {
+        setTheme('light'); // Default to light mode
+    }
+
+    // Event listener for theme toggle button
+    themeToggle.addEventListener('click', () => {
+        if (document.body.classList.contains('dark-mode')) {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+    });
 
     // Event listener for "Explore Interactive Guidelines" button
     exploreInteractiveBtn.addEventListener('click', (e) => {
@@ -46,19 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 label: 'Max Daily Screen Time (Hours)',
                 data: [1, 2],
                 backgroundColor: [
-                    '#FFD166', // Yellow
-                    '#118AB2', // Blue
+                    'var(--chart-bg-1)',
+                    'var(--chart-bg-2)',
                 ],
                 borderColor: [
-                    '#073B4C', // Dark Blue
-                    '#073B4C' // Dark Blue
+                    'var(--chart-border-1)',
+                    'var(--chart-border-2)'
                 ],
                 borderWidth: 2,
                 borderRadius: 8,
             }]
         };
 
-        new Chart(infographicScreenTimeCtx, {
+        window.infographicChart = new Chart(infographicScreenTimeCtx, {
             type: 'bar',
             data: infographicScreenTimeData,
             options: {
@@ -71,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     tooltip: {
                         enabled: true,
-                        backgroundColor: '#073B4C', // Dark blue tooltip background
+                        backgroundColor: 'var(--header-bg)',
                         titleFont: { weight: 'bold' },
                         bodyFont: { size: 12 },
                         displayColors: false,
@@ -110,12 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             font: {
                                 size: 14,
                                 weight: 'bold',
-                                color: '#073B4C' // Dark blue text for x-axis title
+                                color: 'var(--main-text)' // Ensure chart text changes color
                             }
                         },
                         ticks: {
                             stepSize: 0.5,
-                            color: '#073B4C' // Dark blue text for x-axis ticks
+                            color: 'var(--main-text)' // Ensure chart ticks change color
                         }
                     },
                     y: {
@@ -126,9 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             font: {
                                 size: 14,
                                 weight: 'bold',
-                                color: '#073B4C' // Dark blue text for y-axis ticks
+                                color: 'var(--main-text)' // Ensure chart ticks change color
                             },
-                            color: '#073B4C' // Dark blue text for y-axis ticks
+                            color: 'var(--main-text)' // Ensure chart ticks change color
                         }
                     }
                 }
@@ -237,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }]
         };
 
-        new Chart(interactiveScreenTimeCtx, {
+        window.interactiveChart = new Chart(interactiveScreenTimeCtx, {
             type: 'bar',
             data: interactiveScreenTimeData,
             options: {
