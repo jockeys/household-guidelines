@@ -1,5 +1,5 @@
 site_name: '' # Removed the site name text as requested
-site_url: https://jockeys.github.io/household-guidelines/ # Your actual GitHub Pages URL
+site_url: https://jockeys.github.io/household-guidelines # Your actual GitHub Pages URL
 site_description: Comprehensive guidelines for a harmonious blended family.
 
 # Crucial: Build the MkDocs site into a 'report' subdirectory
