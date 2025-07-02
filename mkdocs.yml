@@ -1,13 +1,12 @@
 site_name: '' # Removed the site name text as requested
-site_url: https://github.com/jockeys/household-guidelines/ # Replace with your actual GitHub Pages URL
+site_url: https://jockeys.github.io/household-guidelines/ # Your actual GitHub Pages URL
 site_description: Comprehensive guidelines for a harmonious blended family.
 
-# Remove the explicit 'Home: index.md' from nav to avoid duplication in the top bar
-# MkDocs automatically treats index.md as the home page.
+# Crucial: Build the MkDocs site into a 'report' subdirectory
+site_dir: report
+
 nav:
-  # You can add other sections here if you had more Markdown files, e.g.:
-  # - Introduction: introduction.md
-  # - Guidelines: guidelines.md
+  - Report: index.md # This will be the main page of your MkDocs site, living in /report/
 
 theme:
   name: material
