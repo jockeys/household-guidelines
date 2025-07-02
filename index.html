@@ -9,160 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* Base styling for the entire page */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light background as per previous version */
-            color: #073B4C; /* Dark text for light mode */
-        }
-        /* Color palette definitions */
-        .palette-bg { background-color: #073B4C; } /* Dark blue for header */
-        .palette-text-light { color: #FFD166; } /* Yellow for header text */
-        .palette-text-dark { color: #073B4C; } /* Dark blue for main text */
-        .palette-accent-red { background-color: #FF6B6B; } /* Red accent */
-        .palette-accent-yellow { background-color: #FFD166; } /* Yellow accent */
-        .palette-accent-green { background-color: #06D6A0; } /* Green accent */
-        .palette-accent-blue { background-color: #118AB2; } /* Blue accent */
-
-        /* Page display logic for switching between infographic and interactive sections */
-        .page {
-            display: none; /* Hide pages by default */
-            width: 100%;
-            min-height: 100vh;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out; /* Smooth transition when active */
-        }
-        .page.active {
-            display: block; /* Show active page */
-            opacity: 1;
-        }
-
-        /* Chart container styling for responsiveness */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
-        }
-        @media (max-width: 768px) {
-            .chart-container {
-                height: 300px;
-            }
-        }
-
-        /* Infographic timeline styling */
-        .infographic-timeline::before {
-            content: '';
-            position: absolute;
-            left: 1.25rem; /* Position the vertical line */
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background-color: #e5e7eb; /* Light gray line */
-            border-radius: 2px;
-        }
-        .infographic-timeline-item {
-            position: relative;
-        }
-        .infographic-timeline-dot {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translate(-50%, -50%); /* Center the dot on the line */
-            width: 2.5rem;
-            height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 4px solid white; /* White border around the dot */
-        }
-
-        /* Interactive app sidebar navigation styling */
-        .interactive-sidebar-nav-item {
-            transition: all 0.2s ease-in-out;
-            border-left: 3px solid transparent; /* Highlight active item */
-        }
-        .interactive-sidebar-nav-item.active, .interactive-sidebar-nav-item:hover {
-            background-color: #f8fafc; /* Light background on hover/active */
-            border-left-color: #118AB2; /* Blue accent on hover/active */
-            color: #073B4C; /* Dark text on hover/active */
-        }
-        /* Interactive app content sections display */
-        .interactive-content-section {
-            display: none; /* Hide content sections by default */
-        }
-        .interactive-content-section.active {
-            display: block; /* Show active content section */
-            animation: fadeIn 0.5s ease-in-out; /* Fade in animation */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Interactive app framework card styling (accordion) */
-        .interactive-framework-card {
-            transition: all 0.3s ease-in-out;
-            border: 1px solid #e5e7eb; /* Light gray border */
-        }
-        .interactive-framework-card .interactive-framework-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), padding 0.5s ease;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-        .interactive-framework-card.open .interactive-framework-content {
-            max-height: 1000px; /* Arbitrarily large to allow content to show */
-            transition: max-height 1s cubic-bezier(1, 0, 1, 0), padding 0.5s ease;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        /* Interactive app timeline styling */
-        .interactive-timeline::before {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #DCD7CF; /* Light brown line */
-        }
-        .interactive-timeline-item-dot {
-            position: absolute;
-            left: -1px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 22px;
-            height: 22px;
-            background-color: #FDFBF7; /* Off-white dot background */
-            border: 2px solid #DCD7CF; /* Light brown dot border */
-            border-radius: 50%;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .interactive-timeline-item-dot span {
-            font-size: 10px;
-            font-weight: 600;
-            color: #A8A398; /* Grayish text inside dot */
-        }
-        /* Styling for deep dive links */
-        .deep-dive-link {
-            color: #118AB2; /* Blue color for links */
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .deep-dive-link:hover {
-            text-decoration: underline;
-            color: #0E6C8E; /* Slightly darker blue on hover */
-        }
-    </style>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="palette-text-dark">
 
@@ -189,7 +37,7 @@
                     <p class="text-sm text-gray-500 mt-2">Source: Step Family Foundation, Inc.</p>
                 </div>
                 <p class="max-w-2xl mx-auto text-gray-600 mt-8">That's why we—Diana and Josh—are building a unified approach, combining our strengths to create a stable, loving home for our five wonderful children.</p>
-                <a href="report/#i-introduction-forging-unity-in-your-blended-family" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
+                <a href="https://jockeys.github.io/household-guidelines/report/#i-introduction-forging-unity-in-your-blended-family" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
                     Deep Dive into the Full Guidelines &#x27A1;
                 </a>
             </section>
@@ -217,7 +65,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <a href="report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
+                    <a href="https://jockeys.github.io/household-guidelines/report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
                         Deep Dive into the Full Guidelines &#x27A1;
                     </a>
                 </div>
@@ -244,7 +92,7 @@
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <a href="report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
+                    <a href="https://jockeys.github.io/household-guidelines/report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
                         Deep Dive into the Full Guidelines &#x27A1;
                     </a>
                 </div>
@@ -260,7 +108,7 @@
                         <div class="chart-container">
                             <canvas id="infographicScreenTimeChart"></canvas>
                         </div>
-                        <a href="report/#c-screen-time-and-device-use" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
+                        <a href="https://jockeys.github.io/household-guidelines/report/#c-screen-time-and-device-use" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
                             Deep Dive into Screen Time Guidelines &#x27A1;
                         </a>
                     </div>
@@ -290,7 +138,7 @@
                                 <p class="text-gray-500 pl-8">Tuck-ins, cuddles, and goodnight wishes.</p>
                             </div>
                         </div>
-                        <a href="report/#d-bedtime-and-evening-routines" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
+                        <a href="https://jockeys.github.io/household-guidelines/report/#d-bedtime-and-evening-routines" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
                             Deep Dive into Evening Routines &#x27A1;
                         </a>
                     </div>
@@ -320,7 +168,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="report/#a-food-and-mealtime-expectations" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
+                        <a href="https://jockeys.github.io/household-guidelines/report/#a-food-and-mealtime-expectations" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
                             Deep Dive into Mealtime Guidelines &#x27A1;
                         </a>
                     </div>
@@ -350,7 +198,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="report/#b-toys-personal-property-and-shared-spaces" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
+                        <a href="https://jockeys.github.io/household-guidelines/report/#b-toys-personal-property-and-shared-spaces" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
                             Deep Dive into Property Rules &#x27A1;
                         </a>
                     </div>
@@ -375,7 +223,7 @@
                     <h3 class="font-bold text-xl palette-text-light">This is a Living Document</h3>
                     <p class="mt-2">Our family will grow and change, and so will these guidelines. We commit to regular check-ins to make sure they always serve our family's best interests.</p>
                 </div>
-                <a href="report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
+                <a href="https://jockeys.github.io/household-guidelines/report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
                     Deep Dive into Partnership Guidelines &#x27A1;
                 </a>
             </section>
@@ -427,7 +275,7 @@
             <main class="flex-1 p-4 sm:p-6 md:p-8 pb-20 md:pb-8">
                 <section id="interactive-philosophy" class="interactive-content-section space-y-8">
                     <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Philosophy: A Unified Front</h2>
-                    <a href="report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <a href="https://jockeys.github.io/household-guidelines/report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
                     <p class="text-gray-600">This section outlines our core beliefs about creating a stable, loving, and consistent home. It's about blending our individual strengths—Diana's value for structure and Josh's nurturing flexibility—to create a unified parenting approach that benefits all our children.</p>
 
                     <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
@@ -473,7 +321,7 @@
 
                 <section id="interactive-toolkit" class="interactive-content-section space-y-8">
                     <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Parenting Toolkit</h2>
-                    <a href="report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <a href="https://jockeys.github.io/household-guidelines/report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
                     <p class="text-gray-600">Here are the evidence-based frameworks we've agreed to integrate. Think of these as our shared "playbook" for responding to challenges consistently and effectively. Click on each card to learn more about the core principles and techniques.</p>
                     <div id="interactive-framework-container" class="space-y-4">
                         <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
@@ -527,7 +375,7 @@
 
                 <section id="interactive-routines" class="interactive-content-section space-y-8">
                     <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Daily Routines</h2>
-                    <a href="report/#d-bedtime-and-evening-routines" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <a href="https://jockeys.github.io/household-guidelines/report/#d-bedtime-and-evening-routines" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
                     <p class="text-gray-600">Consistent routines create predictability and security, helping our days run more smoothly. Here are our agreed-upon guidelines for mealtimes and evenings.</p>
 
                     <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
@@ -571,7 +419,7 @@
 
                 <section id="interactive-rules" class="interactive-content-section space-y-8">
                     <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Household Rules</h2>
-                    <a href="report/#iv-comprehensive-household-guidelines-key-areas" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <a href="https://jockeys.github.io/household-guidelines/report/#iv-comprehensive-household-guidelines-key-areas" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
                     <p class="text-gray-600">Clear rules create a respectful and safe environment for everyone. These guidelines cover personal property and screen time, and are applied equitably based on age and developmental needs.</p>
 
                     <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
@@ -596,7 +444,7 @@
 
                 <section id="interactive-partnership" class="interactive-content-section space-y-8">
                     <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Partnership: The Foundation</h2>
-                    <a href="report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
+                    <a href="https://jockeys.github.io/household-guidelines/report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
                     <p class="text-gray-600">Our strength as a couple is the foundation of our family's stability. These principles guide our interactions and decision-making, ensuring we operate as a supportive and unified team.</p>
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
@@ -622,300 +470,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const infographicPage = document.getElementById('infographic-page');
-            const interactiveAppPage = document.getElementById('interactive-app-page');
-            const exploreInteractiveBtn = document.getElementById('explore-interactive-btn');
-            const backToInfographicBtn = document.getElementById('back-to-infographic-btn');
-
-            // Function to show a specific page (infographic or interactive app)
-            function showPage(pageId) {
-                if (pageId === 'infographic-page') {
-                    infographicPage.classList.add('active');
-                    interactiveAppPage.classList.remove('active');
-                } else if (pageId === 'interactive-app-page') {
-                    infographicPage.classList.remove('active');
-                    interactiveAppPage.classList.add('active');
-                    // Ensure interactive app starts at philosophy section when navigated to
-                    updateInteractiveNav('#interactive-philosophy');
-                }
-                window.scrollTo(0, 0); // Scroll to top when switching pages
-            }
-
-            // Event listener for "Explore Interactive Guidelines" button
-            exploreInteractiveBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                showPage('interactive-app-page'); // Switch to interactive app page
-            });
-
-            // Event listener for "Back to Infographic" button
-            backToInfographicBtn.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent default link behavior
-                showPage('infographic-page'); // Switch back to infographic page
-            });
-
-            // Initial page load based on URL hash or default to infographic
-            if (window.location.hash === '#interactive-app-section') {
-                showPage('interactive-app-page');
-            } else {
-                showPage('infographic-page');
-            }
-
-            // --- Infographic Chart Logic (for the landing page) ---
-            const infographicScreenTimeCtx = document.getElementById('infographicScreenTimeChart');
-            if (infographicScreenTimeCtx) {
-                const infographicScreenTimeData = {
-                    labels: [['18-24 Months'], ['Ages 6-9']],
-                    datasets: [{
-                        label: 'Max Daily Screen Time (Hours)',
-                        data: [1, 2],
-                        backgroundColor: [
-                            '#FFD166', // Yellow
-                            '#118AB2', // Blue
-                        ],
-                        borderColor: [
-                            '#073B4C', // Dark Blue
-                            '#073B4C' // Dark Blue
-                        ],
-                        borderWidth: 2,
-                        borderRadius: 8,
-                    }]
-                };
-
-                new Chart(infographicScreenTimeCtx, {
-                    type: 'bar',
-                    data: infographicScreenTimeData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        indexAxis: 'y', // Horizontal bars
-                        plugins: {
-                            legend: {
-                                display: false // Hide legend
-                            },
-                            tooltip: {
-                                enabled: true,
-                                backgroundColor: '#073B4C', // Dark blue tooltip background
-                                titleFont: { weight: 'bold' },
-                                bodyFont: { size: 12 },
-                                displayColors: false,
-                                callbacks: {
-                                    title: function(tooltipItems) {
-                                        const item = tooltipItems[0];
-                                        let label = item.chart.data.labels[item.dataIndex];
-                                        if (Array.isArray(label)) {
-                                            return label.join(' ');
-                                        }
-                                        return label;
-                                    },
-                                    afterBody: function(context) {
-                                        // Custom text for tooltips based on data index
-                                        if (context[0].dataIndex === 0) {
-                                            return [
-                                                'Guideline: High-quality programs only.',
-                                                'Parent must watch WITH the child.',
-                                            ];
-                                        } else if (context[0].dataIndex === 1) {
-                                            return [
-                                                'Guideline: Quality content is key.',
-                                                'Screen-free bedrooms & dining table.'
-                                            ];
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Hours per Day',
-                                    font: {
-                                        size: 14,
-                                        weight: 'bold',
-                                        color: '#073B4C' // Dark blue text for x-axis title
-                                    }
-                                },
-                                ticks: {
-                                    stepSize: 0.5,
-                                    color: '#073B4C' // Dark blue text for x-axis ticks
-                                }
-                            },
-                            y: {
-                                grid: {
-                                    display: false // Hide y-axis grid lines
-                                },
-                                ticks: {
-                                    font: {
-                                        size: 14,
-                                        weight: 'bold',
-                                        color: '#073B4C' // Dark blue text for y-axis ticks
-                                    },
-                                    color: '#073B4C' // Dark blue text for y-axis ticks
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // --- Interactive App Logic (for the internal app section) ---
-            const interactiveNavLinks = document.querySelectorAll('.interactive-sidebar-nav-item, .interactive-mobile-nav-item');
-            const interactiveContentSections = document.querySelectorAll('.interactive-content-section');
-            const interactiveMobileNavItems = document.querySelectorAll('.interactive-mobile-nav-item');
-
-            // Function to update the active navigation link and show the corresponding content section
-            function updateInteractiveNav(hash) {
-                // Update sidebar navigation active state
-                document.querySelectorAll('.interactive-sidebar-nav-item').forEach(link => {
-                    if (link.getAttribute('href') === hash) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-
-                // Update mobile navigation styling
-                interactiveMobileNavItems.forEach(link => {
-                    const icon = link.querySelector('span:first-child');
-                    const text = link.querySelector('span:last-child');
-                    if (link.getAttribute('href') === hash) {
-                        link.style.color = '#073B4C'; // Dark blue for active mobile nav item
-                        text.style.fontWeight = '600'; // Bold text for active mobile nav item
-                    } else {
-                        link.style.color = '#4F4A45'; // Gray for inactive mobile nav item
-                        text.style.fontWeight = '400'; // Normal text for inactive mobile nav item
-                    }
-                });
-
-                // Show/hide content sections
-                interactiveContentSections.forEach(section => {
-                    if ('#' + section.id === hash) {
-                        section.classList.add('active');
-                    } else {
-                        section.classList.remove('active');
-                    }
-                });
-                // Scroll to the top of the interactive app section when navigating within it
-                const interactiveAppSection = document.getElementById('interactive-app-page');
-                if (interactiveAppSection) {
-                    interactiveAppSection.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-
-            // Event handler for interactive navigation links
-            function handleInteractiveNavigation(e) {
-                e.preventDefault(); // Prevent default link behavior
-                const hash = e.currentTarget.getAttribute('href');
-                updateInteractiveNav(hash); // Update navigation and content
-            }
-
-            // Add event listeners to all interactive navigation links
-            interactiveNavLinks.forEach(link => {
-                link.addEventListener('click', handleInteractiveNavigation);
-            });
-
-            // Accordion functionality for Parenting Toolkit cards
-            const interactiveFrameworkCards = document.querySelectorAll('.interactive-framework-card');
-            interactiveFrameworkCards.forEach(card => {
-                const header = card.querySelector('.interactive-framework-header');
-                const icon = header.querySelector('span');
-                header.addEventListener('click', () => {
-                    const wasOpen = card.classList.contains('open');
-                    // Close all other open cards first
-                    interactiveFrameworkCards.forEach(otherCard => {
-                        if (otherCard !== card && otherCard.classList.contains('open')) {
-                            otherCard.classList.remove('open');
-                            otherCard.querySelector('.interactive-framework-header span').style.transform = 'rotate(0deg)';
-                        }
-                    });
-                    // Toggle current card
-                    if (!wasOpen) {
-                        card.classList.add('open');
-                        icon.style.transform = 'rotate(90deg)';
-                    } else {
-                        card.classList.remove('open');
-                        icon.style.transform = 'rotate(0deg)';
-                    }
-                });
-            });
-
-            // Chart.js for Screen Time in interactive app
-            const interactiveScreenTimeCtx = document.getElementById('interactiveScreenTimeChart');
-            if (interactiveScreenTimeCtx) {
-                const interactiveScreenTimeData = {
-                    labels: ['18-24 Months', 'Ages 6-9'],
-                    datasets: [{
-                        label: 'Max Recommended Daily Screen Time (Hours)',
-                        data: [1, 2],
-                        backgroundColor: [
-                            'rgba(168, 163, 152, 0.6)', // Grayish color
-                            'rgba(228, 213, 199, 0.8)', // Lighter grayish color
-                        ],
-                        borderColor: [
-                            'rgb(168, 163, 152)',
-                            'rgb(228, 213, 199)',
-                        ],
-                        borderWidth: 1
-                    }]
-                };
-
-                new Chart(interactiveScreenTimeCtx, {
-                    type: 'bar',
-                    data: interactiveScreenTimeData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    title: function(tooltipItems) {
-                                        const item = tooltipItems[0];
-                                        let label = item.chart.data.labels[item.dataIndex];
-                                        if (Array.isArray(label)) {
-                                            return label.join(' ');
-                                        }
-                                        return label;
-                                    },
-                                    afterBody: function(context) {
-                                        if (context[0].dataIndex === 0) {
-                                            return [
-                                                'Guideline: High-quality programming.',
-                                                'Parent must watch WITH the child.',
-                                                'No unsupervised media use.'
-                                            ];
-                                        } else if (context[0].dataIndex === 1) {
-                                            return [
-                                                'Priority: Outdoor play, reading, social time.',
-                                                'Content: Educational or creative focus.',
-                                                'Zones: Screen-free bedrooms & dining table.'
-                                            ];
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                title: {
-                                    display: true,
-                                    text: 'Hours per Day'
-                                },
-                                ticks: {
-                                    stepSize: 0.5
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-        });
-    </script>
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
 </body>
 </html>
