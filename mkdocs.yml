@@ -1,5 +1,5 @@
-site_name: 'Household Guidelines for a Harmonious Blended Family' # Removed the site name text as requested
-site_url: https://jockeys.github.io/household-guidelines # Your actual GitHub Pages URL
+site_name: '' # Removed the site name text as requested
+site_url: https://jockeys.github.io/household-guidelines/ # Your actual GitHub Pages URL
 site_description: Comprehensive guidelines for a harmonious blended family.
 
 # Crucial: Build the MkDocs site into a 'report' subdirectory
@@ -31,10 +31,14 @@ theme:
     - search.highlight
     - content.tabs.link
     - navigation.instant # Added for smoother page transitions
+    # No specific feature needed for settings icon, it's part of core theme.
   icon:
     logo: material/home # Using 'material/home' as previously discussed
   # Disable breadcrumbs to remove the second "Home" link
   breadcrumbs: false
+  # Add custom CSS to increase font size
+  #extra_css:
+  #  - css/extra.css
 
 markdown_extensions:
   - admonition # For callouts like notes, tips, etc.
