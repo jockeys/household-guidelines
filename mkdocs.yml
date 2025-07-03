@@ -7,6 +7,7 @@ site_dir: report
 
 nav:
   - Report: index.md # This will be the main page of your MkDocs site, living in /report/
+  - Frameworks: frameworks.md # <-- Add this line
 
 theme:
   name: material
