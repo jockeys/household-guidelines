@@ -27,6 +27,9 @@
                 height: 350px;
             }
         }
+        .tier-arrow {
+            clip-path: polygon(0 0, 100% 50%, 0 100%);
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -34,99 +37,112 @@
     <!-- Color Palette: Energetic & Playful -->
 
     <header class="bg-[#003B46] text-white text-center py-12 px-4">
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight">The Modern Parent's Toolkit</h1>
-        <p class="mt-4 text-lg max-w-3xl mx-auto text-[#C3DFE0]">An interactive guide to 1-2-3 Magic, Positive Discipline, and Love & Logic for building a harmonious blended family.</p>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight">The Integrated Parenting Toolkit</h1>
+        <p class="mt-4 text-lg max-w-3xl mx-auto text-[#C3DFE0]">A practical guide to choosing the right tool for the job, based on the principles of your family's deep-dive report.</p>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
 
-        <!-- Section 1: Framework Overview -->
+        <!-- Section 1: The Tiered Intervention Model -->
         <section id="overview" class="mb-16">
             <div class="text-center">
-                <h2 class="text-3xl font-bold text-center text-[#07575B] mb-2">Three Philosophies, One Goal</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-4">Each framework offers a unique approach to parenting, but all aim to raise capable, resilient, and well-adjusted children. This chart compares their core focus.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/#vii-frameworks-deep-dive-practical-application" target="_blank" class="text-sm font-semibold text-[#07575B] hover:text-[#003B46] transition-colors mb-8 inline-block">Read the Full Deep Dive Report &rarr;</a>
+                <h2 class="text-3xl font-bold text-center text-[#07575B] mb-2">Which Tool Should I Use?</h2>
+                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-4">Your report highlights an integrated strategy. This tiered model helps you choose the right framework based on the situation: are you proactively building culture, reacting to stop a behavior, or using a mistake as a teaching moment?</p>
+                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iv-synthesizing-the-frameworks-an-integrated-strategy-for-your-family" target="_blank" class="text-sm font-semibold text-[#07575B] hover:text-[#003B46] transition-colors mb-8 inline-block">Read the Full Synthesis Report &rarr;</a>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="chart-container h-96 md:h-[450px]">
-                    <canvas id="frameworkComparisonChart"></canvas>
+            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 space-y-6">
+                <!-- Tier 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-full md:w-1/3 text-center md:text-right">
+                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 1: Proactive Foundation</h3>
+                        <p class="text-gray-600"><strong>Goal:</strong> Build a strong family culture and solve problems before they start.</p>
+                    </div>
+                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
+                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
+                        <h4 class="font-bold text-[#003B46]">Use: Positive Discipline</h4>
+                        <p class="text-sm text-gray-700">Employ tools like the weekly <strong>Family Meeting</strong> to give everyone a voice, co-create rules, and foster a sense of belonging and significance.</p>
+                    </div>
+                </div>
+                <!-- Tier 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-full md:w-1/3 text-center md:text-right">
+                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 2: Reactive Containment</h3>
+                        <p class="text-gray-600"><strong>Goal:</strong> Immediately and calmly stop a known "Stop" behavior (whining, arguing).</p>
+                    </div>
+                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
+                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
+                        <h4 class="font-bold text-[#003B46]">Use: 1-2-3 Magic</h4>
+                        <p class="text-sm text-gray-700">Apply the calm, non-emotional <strong>1-2-3 counting</strong> method to re-establish a boundary without getting into a power struggle.</p>
+                    </div>
+                </div>
+                <!-- Tier 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-4">
+                    <div class="w-full md:w-1/3 text-center md:text-right">
+                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 3: Teachable Moments</h3>
+                        <p class="text-gray-600"><strong>Goal:</strong> Turn a mistake into a lesson in responsibility.</p>
+                    </div>
+                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
+                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
+                        <h4 class="font-bold text-[#003B46]">Use: Love & Logic</h4>
+                        <p class="text-sm text-gray-700">When a child makes an "affordable mistake," respond with <strong>empathy</strong> and allow them to experience the <strong>logical consequence</strong> of their choice.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: 1-2-3 Magic Deep Dive -->
+        <!-- Section 2: 1-2-3 Magic Toolkit -->
         <section id="magic" class="mb-16">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">1-2-3 Magic: For Immediate Boundaries</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework provides a simple, non-emotional tool for quickly stopping negative behaviors like whining, arguing, and tantrums.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/#1-2-3-magic-in-practice" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ MORE IN THE REPORT</a>
+                <h2 class="text-3xl font-bold text-[#07575B] mb-2">1-2-3 Magic: The "Stop" & "Start" System</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework divides parenting tasks into two jobs: managing behaviors you want to stop and encouraging those you want to start.</p>
+                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-i-the-1-2-3-magic-framework-a-tool-for-immediate-behavioral-boundaries" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE 1-2-3 MAGIC REPORT</a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-[#66A5AD] mb-4 text-center">Core Toolkit Breakdown</h3>
-                    <p class="text-sm text-gray-600 mb-4 text-center">The system is split between tools to stop negative actions and motivate positive ones.</p>
-                    <div class="chart-container h-80">
-                        <canvas id="magicDonutChart"></canvas>
+                    <h3 class="text-xl font-bold text-[#66A5AD] mb-4 text-center">Toolkit for "Stop" Behaviors</h3>
+                    <p class="text-sm text-gray-600 mb-6 text-center">Use the counting method for whining, arguing, tantrums, etc. The key is the **"No-Talking, No-Emotion" Rule**.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center"><div class="bg-[#C4DFE6] text-[#07575B] rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">1</div><p class="flex-grow">Parent calmly says, "That's 1."</p></div>
+                        <div class="pl-5"><span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span></div>
+                        <div class="flex items-center"><div class="bg-[#66A5AD] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">2</div><p class="flex-grow">If behavior continues, "That's 2."</p></div>
+                        <div class="pl-5"><span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span></div>
+                        <div class="flex items-center"><div class="bg-[#07575B] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">3</div><p class="flex-grow">"That's 3. Time-out." (Consequence is automatic).</p></div>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">The Counting Flowchart</h3>
-                    <p class="text-sm text-gray-600 mb-6 text-center">Follow this simple, calm process to address "Stop" behaviors without arguing.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="bg-[#C4DFE6] text-[#07575B] rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">1</div>
-                            <div class="flex-grow">
-                                <p class="font-semibold">Child starts "Stop" behavior.</p>
-                                <p class="text-sm text-gray-500">Parent calmly says, "That's 1." No emotion.</p>
-                            </div>
-                        </div>
-                        <div class="pl-5">
-                             <span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span>
-                        </div>
-                        <div class="flex items-center">
-                             <div class="bg-[#66A5AD] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">2</div>
-                            <div class="flex-grow">
-                                <p class="font-semibold">Behavior continues.</p>
-                                <p class="text-sm text-gray-500">Parent calmly says, "That's 2." No lecture.</p>
-                            </div>
-                        </div>
-                         <div class="pl-5">
-                             <span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span>
-                        </div>
-                        <div class="flex items-center">
-                             <div class="bg-[#07575B] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">3</div>
-                             <div class="flex-grow">
-                                <p class="font-semibold">Behavior persists.</p>
-                                <p class="text-sm text-gray-500">Parent says, "That's 3. Time-out." Consequence is automatic.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">Toolkit for "Start" Behaviors</h3>
+                    <p class="text-sm text-gray-600 mb-6 text-center">Use positive reinforcement tools to motivate chores, homework, and routines.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3"><span class="text-2xl">⏱️</span><div><strong class="text-gray-700">Kitchen Timers:</strong> Turn tasks into a game. "Can you clean up before the timer goes off?"</div></li>
+                        <li class="flex items-center gap-3"><span class="text-2xl">⭐</span><div><strong class="text-gray-700">Charting:</strong> Use stickers to track completed chores, leading to a larger reward.</div></li>
+                        <li class="flex items-center gap-3"><span class="text-2xl">💰</span><div><strong class="text-gray-700">Docking System:</strong> For older kids, link allowance to completed responsibilities.</div></li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Positive Discipline Deep Dive -->
+        <!-- Section 3: Positive Discipline Toolkit -->
         <section id="positive" class="mb-16">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Positive Discipline: For Long-Term Skills</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">Focuses on teaching self-discipline and problem-solving through connection, respect, and empowerment.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/#positive-discipline-in-practice" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ MORE IN THE REPORT</a>
+                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Positive Discipline: Connection is Key</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework's goal is to teach long-term skills by making children feel a sense of belonging and significance.</p>
+                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-ii-the-positive-discipline-framework-building-long-term-skills-and-connection" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE POSITIVE DISCIPLINE REPORT</a>
             </div>
              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">The Family Meeting Agenda</h3>
-                     <p class="text-sm text-gray-600 mb-6 text-center">This structured process turns conflict resolution into a collaborative, skill-building exercise.</p>
-                     <ul class="space-y-3">
-                         <li class="flex items-start"><span class="text-[#003B46] font-bold text-xl mr-3">&#9733;</span><div><span class="font-semibold">Start with Compliments:</span> Build connection by having each person appreciate another.</div></li>
-                         <li class="flex items-start"><span class="text-[#003B46] font-bold text-xl mr-3">&#9998;</span><div><span class="font-semibold">Review Agenda:</span> Discuss problems added by family members during the week.</div></li>
-                         <li class="flex items-start"><span class="text-[#003B46] font-bold text-xl mr-3">&#128161;</span><div><span class="font-semibold">Brainstorm Solutions:</span> Generate ideas without judgment. All suggestions are written down.</div></li>
-                         <li class="flex items-start"><span class="text-[#003B46] font-bold text-xl mr-3">&#128077;</span><div><span class="font-semibold">Choose One Solution:</span> Agree on one respectful, reasonable, and helpful solution to try for the week.</div></li>
-                         <li class="flex items-start"><span class="text-[#003B46] font-bold text-xl mr-3">&#127881;</span><div><span class="font-semibold">Plan Family Fun:</span> End on a high note by scheduling an enjoyable activity together.</div></li>
-                     </ul>
+                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">The Family Meeting Cycle</h3>
+                     <p class="text-sm text-gray-600 mb-6 text-center">Use this weekly process to solve problems collaboratively and build your family culture.</p>
+                     <div class="relative w-full h-72">
+                         <div class="absolute top-0 left-1/2 -translate-x-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Compliments</div></div>
+                         <div class="absolute top-1/2 left-0 -translate-y-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Plan Fun</div></div>
+                         <div class="absolute top-1/2 right-0 -translate-y-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Agenda Items</div></div>
+                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Brainstorm & Choose</div></div>
+                         <div class="absolute inset-0 flex items-center justify-center"><div class="w-48 h-48 border-4 border-dashed border-[#66A5AD] rounded-full flex items-center justify-center text-center p-4 font-bold text-[#07575B]">Solving Problems Together</div></div>
+                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">Punitive vs. Positive Time-Out</h3>
-                    <p class="text-sm text-gray-600 mb-4 text-center">This chart highlights the fundamental shift from punishment to teaching self-regulation.</p>
+                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">Goal of Time-Out: Punishment vs. Self-Regulation</h3>
+                    <p class="text-sm text-gray-600 mb-4 text-center">This chart from your report shows the shift from a punitive time-out to a "Positive Time-Out" designed for calming down.</p>
                     <div class="chart-container h-80">
                         <canvas id="timeOutComparisonChart"></canvas>
                     </div>
@@ -134,43 +150,26 @@
             </div>
         </section>
 
-        <!-- Section 4: Love & Logic Deep Dive -->
+        <!-- Section 4: Love & Logic Toolkit -->
         <section id="love-logic" class="mb-16">
              <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Love & Logic: For Responsible Choices</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">Empowers children by allowing them to experience the real-world consequences of their decisions, delivered with empathy.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/#love-logic-in-practice" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ MORE IN THE REPORT</a>
+                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Love & Logic: Responsibility Through Empathy</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework uses real-world outcomes as the teacher, allowing kids to learn from "affordable mistakes."</p>
+                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iii-the-love-logic-framework-empowering-responsible-decision-makers" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE LOVE & LOGIC REPORT</a>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-6">The Consequence Funnel: From Problem to Lesson</h3>
-                <p class="text-sm text-gray-600 mb-8 text-center">This process turns mistakes into powerful learning opportunities while preserving the parent-child relationship.</p>
-
-                <div class="relative flex flex-col items-center">
-                    <!-- Step 1 -->
-                    <div class="bg-gray-100 rounded-full p-4 w-64 text-center z-10 shadow">
-                        <p class="text-sm text-[#003B46] font-bold">CHILD CREATES A PROBLEM</p>
-                        <p class="text-xs text-gray-500">e.g., Forgets homework, breaks a toy, makes a mess.</p>
-                    </div>
-                    <div class="w-px h-12 bg-[#C4DFE6]"></div>
-
-                    <!-- Step 2 -->
-                    <div class="bg-[#C4DFE6] rounded-full p-4 w-72 text-center z-10 shadow">
-                        <p class="text-lg text-[#07575B] font-bold">PARENT RESPONDS WITH EMPATHY</p>
-                        <p class="text-sm text-gray-600">"Oh man, that is so sad." or "Bummer."</p>
-                    </div>
-                    <div class="w-px h-12 bg-[#66A5AD]"></div>
-
-                    <!-- Step 3 -->
-                    <div class="bg-[#66A5AD] text-white rounded-full p-4 w-80 text-center z-10 shadow">
-                        <p class="text-xl font-bold">PARENT HANDS PROBLEM BACK</p>
-                        <p class="text-sm">"What are you going to do?" or "How do you plan to solve this?"</p>
-                    </div>
-                    <div class="w-px h-12 bg-[#07575B]"></div>
-
-                    <!-- Step 4 -->
-                     <div class="bg-[#07575B] text-white rounded-lg p-6 w-96 text-center z-10 shadow">
-                        <p class="text-2xl font-black">CONSEQUENCE BECOMES THE TEACHER</p>
-                        <p class="text-sm mt-2">The child learns responsibility from the logical or natural outcome, not from parental anger.</p>
+                <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-6">How to Respond to a Mistake</h3>
+                <p class="text-sm text-gray-600 mb-8 text-center">Follow this process to hand problems back to your child in a loving way.</p>
+                <div class="space-y-6">
+                    <div class="text-center"><div class="p-4 bg-gray-100 rounded-lg inline-block shadow-sm"><strong class="text-[#003B46]">1. Child Makes an "Affordable Mistake"</strong><p class="text-xs">(e.g., Forgets lunch, leaves toys out)</p></div></div>
+                    <div class="text-center text-2xl text-[#66A5AD] font-mono">&#8595;</div>
+                    <div class="text-center"><div class="p-4 bg-[#C4DFE6] rounded-lg inline-block shadow-sm"><strong class="text-[#003B46]">2. Respond with Sincere Empathy (Not Anger)</strong><p class="text-xs">"Oh, man, that's a bummer." or "This is so sad."</p></div></div>
+                    <div class="text-center text-2xl text-[#66A5AD] font-mono">&#8595;</div>
+                    <div class="text-center"><div class="p-4 bg-[#66A5AD] text-white rounded-lg inline-block shadow-sm"><strong class="text-white">3. Let the Consequence Teach the Lesson</strong></div></div>
+                    <div class="flex flex-col md:flex-row gap-4 justify-center text-center">
+                        <div class="flex-1 p-3 bg-gray-100 rounded-lg"><strong class="text-sm">Natural Consequence</strong><p class="text-xs">(e.g., Forgets jacket, feels cold)</p></div>
+                        <div class="font-bold text-gray-400 self-center">OR</div>
+                        <div class="flex-1 p-3 bg-gray-100 rounded-lg"><strong class="text-sm">Logical Consequence</strong><p class="text-xs">(e.g., Makes a mess, cleans it up)</p></div>
                     </div>
                 </div>
             </div>
@@ -220,23 +219,14 @@
                 legend: {
                     position: 'bottom',
                      labels: {
-                        font: {
-                            size: 12,
-                            family: 'Inter'
-                        },
+                        font: { size: 12, family: 'Inter' },
                         color: '#4A5568'
                     }
                 },
                 tooltip: {
-                    callbacks: {
-                        title: tooltipTitleCallback
-                    },
-                    bodyFont: {
-                        family: 'Inter'
-                    },
-                    titleFont: {
-                         family: 'Inter'
-                    }
+                    callbacks: { title: tooltipTitleCallback },
+                    bodyFont: { family: 'Inter' },
+                    titleFont: { family: 'Inter' }
                 }
             },
             scales: {
@@ -251,77 +241,12 @@
             }
         };
 
-        // Chart 1: Framework Comparison (Radar Chart)
-        const ctx1 = document.getElementById('frameworkComparisonChart').getContext('2d');
-        new Chart(ctx1, {
-            type: 'radar',
-            data: {
-                labels: ['Boundary Setting', 'Skill Building', 'Emotional Connection', 'Child Autonomy', 'Parental Control', 'Problem Solving'],
-                datasets: [{
-                    label: '1-2-3 Magic',
-                    data: [9, 3, 2, 4, 9, 2],
-                    backgroundColor: 'rgba(0, 59, 70, 0.2)',
-                    borderColor: '#003B46',
-                    pointBackgroundColor: '#003B46'
-                }, {
-                    label: 'Positive Discipline',
-                    data: [6, 9, 9, 7, 5, 9],
-                    backgroundColor: 'rgba(102, 165, 173, 0.2)',
-                    borderColor: '#66A5AD',
-                    pointBackgroundColor: '#66A5AD'
-                }, {
-                    label: 'Love & Logic',
-                    data: [7, 7, 6, 9, 3, 8],
-                    backgroundColor: 'rgba(196, 223, 230, 0.4)',
-                    borderColor: '#C4DFE6',
-                    pointBackgroundColor: '#C4DFE6'
-                }]
-            },
-            options: {
-                ...sharedChartOptions,
-                scales: {
-                    r: {
-                        angleLines: { color: '#CBD5E0' },
-                        grid: { color: '#CBD5E0' },
-                        pointLabels: { font: { size: 12, family: 'Inter' }, color: '#4A5568' },
-                        ticks: {
-                            color: '#4A5568',
-                            backdropColor: 'rgba(255, 255, 255, 0.75)'
-                        }
-                    }
-                }
-            }
-        });
-
-        // Chart 2: 1-2-3 Magic Donut Chart
-        const ctx2 = document.getElementById('magicDonutChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'doughnut',
-            data: {
-                labels: ['"Stop" Behavior Tools (Counting)', '"Start" Behavior Tools (Timers, Charts)'],
-                datasets: [{
-                    data: [50, 50],
-                    backgroundColor: ['#07575B', '#66A5AD'],
-                    borderColor: '#FFFFFF',
-                    borderWidth: 4
-                }]
-            },
-            options: {
-                ...sharedChartOptions,
-                cutout: '60%',
-                plugins: {
-                    ...sharedChartOptions.plugins,
-                    tooltip: { enabled: true }
-                }
-            }
-        });
-
-        // Chart 3: Time-Out Comparison Bar Chart
+        // Chart 1: Time-Out Comparison Bar Chart
         const ctx3 = document.getElementById('timeOutComparisonChart').getContext('2d');
         new Chart(ctx3, {
             type: 'bar',
             data: {
-                labels: [wrapLabel('Teaches Self-Regulation'), wrapLabel('Builds Connection'), wrapLabel('Isolates Child'), wrapLabel('Child feels Empowered')],
+                labels: [wrapLabel('Teaches Self-Regulation'), wrapLabel('Builds Connection'), wrapLabel('Isolates Child'), wrapLabel('Child Feels Empowered')],
                 datasets: [{
                     label: 'Punitive Time-Out',
                     data: [2, 1, 9, 1],
@@ -341,11 +266,9 @@
                     x: {
                         beginAtZero: true,
                         max: 10,
-                        grid: { display: true }
+                        title: { display: true, text: 'Effectiveness Score (1-10)' }
                     },
-                    y: {
-                         grid: { display: false }
-                    }
+                    y: { grid: { display: false } }
                 }
             }
         });
