@@ -1,0 +1,16 @@
+/* Custom CSS for MkDocs Material Theme */
+
+/* Increase the base font size for the entire document */
+html {
+  font-size: 50px; /* A slightly larger base font size */
+}
+
+/* You can add more specific overrides here if needed, for example: */
+/*
+.md-typeset h1 {
+  font-size: 2.2em;
+}
+.md-typeset p {
+  line-height: 1.7;
+}
+*/
