@@ -3,276 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parenting Frameworks: An Interactive Guide</title>
+    <title>The Integrated Family OS: A Visual Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #F7FAFC; 
+            color: #073B4C;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+            height: 350px;
+            max-height: 450px;
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 350px;
+                height: 400px;
+                max-height: 500px;
             }
         }
-        .tier-arrow {
-            clip-path: polygon(0 0, 100% 50%, 0 100%);
+        .flow-arrow {
+            width: 2px;
+            height: 1.5rem;
+            background-color: #94a3b8;
+            margin: 0.5rem auto;
+            position: relative;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #94a3b8;
+        }
+        .section-link {
+            transition: color 0.2s ease-in-out;
+            display: inline-block;
+        }
+        .section-link:hover {
+            color: #118AB2;
+            text-decoration: underline;
+        }
+        .clickable-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .clickable-card:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-slate-50">
 
-    <!-- Color Palette: Energetic & Playful -->
+    <main class="container mx-auto px-4 py-8 sm:py-12">
 
-    <header class="bg-[#003B46] text-white text-center py-12 px-4">
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight">The Integrated Parenting Toolkit</h1>
-        <p class="mt-4 text-lg max-w-3xl mx-auto text-[#C3DFE0]">A practical guide to choosing the right tool for the job, based on the principles of your family's deep-dive report.</p>
-    </header>
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#073B4C] leading-tight">The Integrated Family OS</h1>
+            <p class="text-lg md:text-xl text-[#118AB2] mt-2 max-w-3xl mx-auto">A Visual Guide to Harmonious Blending: From Conflict to a Cohesive, Unified System</p>
+        </header>
 
-    <main class="container mx-auto p-4 md:p-8">
-
-        <!-- Section 1: The Tiered Intervention Model -->
-        <section id="overview" class="mb-16">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold text-center text-[#07575B] mb-2">Which Tool Should I Use?</h2>
-                <p class="text-center text-gray-600 max-w-3xl mx-auto mb-4">Your report highlights an integrated strategy. This tiered model helps you choose the right framework based on the situation: are you proactively building culture, reacting to stop a behavior, or using a mistake as a teaching moment?</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iv-synthesizing-the-frameworks-an-integrated-strategy-for-your-family" target="_blank" class="text-sm font-semibold text-[#07575B] hover:text-[#003B46] transition-colors mb-8 inline-block">Read the Full Synthesis Report &rarr;</a>
+        <section id="layers" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">The Four Layers of the OS</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">This system isn't about choosing one philosophy, but about using the right tool for the right job. The layers build upon each other, from foundational communication to in-the-moment responses.</p>
+            <div class="max-w-4xl mx-auto space-y-4">
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-8 border-[#118AB2]">
+                     <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-i-the-foundational-communication-layer-nonviolent-communication-nvc" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="text-xl font-bold text-[#073B4C]">The Foundation Layer: Nonviolent Communication (NVC) →</h3>
+                    </a>
+                    <p class="text-slate-600 mt-1">The core protocol for ALL family interactions, especially parent-parent alignment. It's the "how" behind everything else.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-8 border-[#06D6A0]">
+                    <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-ii-the-proactive-problem-solving-layer-collaborative-proactive-solutions-cps" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="text-xl font-bold text-[#073B4C]">The Proactive Layer: Collaborative & Proactive Solutions (CPS) →</h3>
+                    </a>
+                    <p class="text-slate-600 mt-1">The strategy for systematically and collaboratively solving the predictable, recurring problems that trigger challenging behavior.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-8 border-[#FFD166]">
+                    <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iii-the-daily-management-layer-love-logic" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="text-xl font-bold text-[#073B4C]">The Daily & Relational Layers: Love & Logic / Positive Discipline →</h3>
+                    </a>
+                    <p class="text-slate-600 mt-1">Tools for everyday management, teaching responsibility, and building a strong family culture through respect and connection.</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 border-l-8 border-[#EF476F]">
+                     <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-v-the-emergency-boundary-layer-1-2-3-magic" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="text-xl font-bold text-[#073B4C]">The Emergency Layer: 1-2-3 Magic →</h3>
+                    </a>
+                    <p class="text-slate-600 mt-1">For immediate behavioral containment in safety situations. Use sparingly for maximum impact.</p>
+                </div>
             </div>
-            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8 space-y-6">
-                <!-- Tier 1 -->
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <div class="w-full md:w-1/3 text-center md:text-right">
-                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 1: Proactive Foundation</h3>
-                        <p class="text-gray-600"><strong>Goal:</strong> Build a strong family culture and solve problems before they start.</p>
-                    </div>
-                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
-                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
-                        <h4 class="font-bold text-[#003B46]">Use: Positive Discipline</h4>
-                        <p class="text-sm text-gray-700">Employ tools like the weekly <strong>Family Meeting</strong> to give everyone a voice, co-create rules, and foster a sense of belonging and significance.</p>
-                    </div>
+        </section>
+
+        <section id="comparison" class="mb-16 md:mb-24">
+            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#table-5-comparative-matrix-of-all-five-frameworks" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">Framework Strengths at a Glance →</h2>
+            </a>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-10">Each framework has a unique profile. This chart compares them across key parenting goals, helping you understand which tool to reach for based on its inherent strengths.</p>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-2xl">
+                <div class="chart-container">
+                    <canvas id="frameworksRadarChart"></canvas>
                 </div>
-                <!-- Tier 2 -->
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <div class="w-full md:w-1/3 text-center md:text-right">
-                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 2: Reactive Containment</h3>
-                        <p class="text-gray-600"><strong>Goal:</strong> Immediately and calmly stop a known "Stop" behavior (whining, arguing).</p>
-                    </div>
-                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
-                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
-                        <h4 class="font-bold text-[#003B46]">Use: 1-2-3 Magic</h4>
-                        <p class="text-sm text-gray-700">Apply the calm, non-emotional <strong>1-2-3 counting</strong> method to re-establish a boundary without getting into a power struggle.</p>
-                    </div>
+            </div>
+        </section>
+
+        <section id="decision-tree" class="mb-16 md:mb-24">
+             <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#the-decision-tree-choosing-the-right-tool-for-the-job" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">The Decision-Making Engine →</h2>
+            </a>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-10">When a challenge arises, don't just react. Use this simple decision tree to determine which layer of the OS to access for the most effective response.</p>
+            <div class="w-full max-w-2xl mx-auto flex flex-col items-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#073B4C] w-full sm:w-3/4">
+                    <p class="font-bold text-lg">A Challenge Occurs</p>
                 </div>
-                <!-- Tier 3 -->
-                <div class="flex flex-col md:flex-row items-center gap-4">
-                    <div class="w-full md:w-1/3 text-center md:text-right">
-                        <h3 class="text-2xl font-bold text-[#07575B]">Tier 3: Teachable Moments</h3>
-                        <p class="text-gray-600"><strong>Goal:</strong> Turn a mistake into a lesson in responsibility.</p>
+                <div class="flow-arrow"></div>
+                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#118AB2] w-full sm:w-3/4">
+                    <p class="font-semibold text-lg text-[#118AB2]">Is this an immediate SAFETY risk?</p>
+                </div>
+                <div class="w-full mt-4 bg-slate-100/70 p-4 rounded-xl shadow-inner">
+                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex-shrink-0 bg-[#EF476F] text-white font-bold px-3 py-1 rounded-full">YES</div>
+                        <div class="flex-grow">
+                            <p class="font-semibold text-slate-700">If there is a safety risk, use the...</p>
+                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-v-the-emergency-boundary-layer-1-2-3-magic" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#EF476F]">
+                                    <h4 class="font-bold text-lg text-[#EF476F]">Emergency Layer →</h4>
+                                    <p class="text-sm text-slate-500">1-2-3 Magic</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="w-16 h-16 bg-[#66A5AD] tier-arrow hidden md:block"></div>
-                    <div class="w-full md:w-2/3 bg-[#C4DFE6] p-4 rounded-lg">
-                        <h4 class="font-bold text-[#003B46]">Use: Love & Logic</h4>
-                        <p class="text-sm text-gray-700">When a child makes an "affordable mistake," respond with <strong>empathy</strong> and allow them to experience the <strong>logical consequence</strong> of their choice.</p>
+                    <hr class="my-4 border-slate-300">
+                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex-shrink-0 bg-[#118AB2] text-white font-bold px-3 py-1 rounded-full">NO</div>
+                        <div class="flex-grow w-full">
+                            <p class="font-semibold text-slate-700">If there is no safety risk, ask...</p>
+                            <div class="mt-2 pl-0 sm:pl-6">
+                                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#118AB2] w-full">
+                                    <p class="font-semibold text-lg text-[#118AB2]">Is it a RECURRING problem?</p>
+                                </div>
+                                <div class="w-full mt-4 bg-slate-200/70 p-4 rounded-xl shadow-inner">
+                                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-shrink-0 bg-[#06D6A0] text-white font-bold px-3 py-1 rounded-full">YES</div>
+                                        <div class="flex-grow">
+                                            <p class="font-semibold text-slate-700">If recurring, use the...</p>
+                                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-ii-the-proactive-problem-solving-layer-collaborative-proactive-solutions-cps" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#06D6A0]">
+                                                    <h4 class="font-bold text-lg text-[#06D6A0]">Proactive Layer →</h4>
+                                                    <p class="text-sm text-slate-500">CPS Plan B (at calm time)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4 border-slate-300">
+                                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-shrink-0 bg-[#118AB2] text-white font-bold px-3 py-1 rounded-full">NO</div>
+                                        <div class="flex-grow">
+                                            <p class="font-semibold text-slate-700">If not recurring, use the...</p>
+                                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iii-the-daily-management-layer-love-logic" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#FFD166]">
+                                                    <h4 class="font-bold text-lg text-[#FFD166]">Daily & Relational Layer →</h4>
+                                                    <p class="text-sm text-slate-500">Love & Logic / Positive Discipline</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: 1-2-3 Magic Toolkit -->
-        <section id="magic" class="mb-16">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">1-2-3 Magic: The "Stop" & "Start" System</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework divides parenting tasks into two jobs: managing behaviors you want to stop and encouraging those you want to start.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-i-the-1-2-3-magic-framework-a-tool-for-immediate-behavioral-boundaries" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE 1-2-3 MAGIC REPORT</a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-[#66A5AD] mb-4 text-center">Toolkit for "Stop" Behaviors</h3>
-                    <p class="text-sm text-gray-600 mb-6 text-center">Use the counting method for whining, arguing, tantrums, etc. The key is the **"No-Talking, No-Emotion" Rule**.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center"><div class="bg-[#C4DFE6] text-[#07575B] rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">1</div><p class="flex-grow">Parent calmly says, "That's 1."</p></div>
-                        <div class="pl-5"><span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span></div>
-                        <div class="flex items-center"><div class="bg-[#66A5AD] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">2</div><p class="flex-grow">If behavior continues, "That's 2."</p></div>
-                        <div class="pl-5"><span class="text-2xl text-[#66A5AD] font-mono">&#8628;</span></div>
-                        <div class="flex items-center"><div class="bg-[#07575B] text-white rounded-full h-10 w-10 flex items-center justify-center font-bold text-lg mr-4 flex-shrink-0">3</div><p class="flex-grow">"That's 3. Time-out." (Consequence is automatic).</p></div>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">Toolkit for "Start" Behaviors</h3>
-                    <p class="text-sm text-gray-600 mb-6 text-center">Use positive reinforcement tools to motivate chores, homework, and routines.</p>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3"><span class="text-2xl">⏱️</span><div><strong class="text-gray-700">Kitchen Timers:</strong> Turn tasks into a game. "Can you clean up before the timer goes off?"</div></li>
-                        <li class="flex items-center gap-3"><span class="text-2xl">⭐</span><div><strong class="text-gray-700">Charting:</strong> Use stickers to track completed chores, leading to a larger reward.</div></li>
-                        <li class="flex items-center gap-3"><span class="text-2xl">💰</span><div><strong class="text-gray-700">Docking System:</strong> For older kids, link allowance to completed responsibilities.</div></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Positive Discipline Toolkit -->
-        <section id="positive" class="mb-16">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Positive Discipline: Connection is Key</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework's goal is to teach long-term skills by making children feel a sense of belonging and significance.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-ii-the-positive-discipline-framework-building-long-term-skills-and-connection" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE POSITIVE DISCIPLINE REPORT</a>
-            </div>
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">The Family Meeting Cycle</h3>
-                     <p class="text-sm text-gray-600 mb-6 text-center">Use this weekly process to solve problems collaboratively and build your family culture.</p>
-                     <div class="relative w-full h-72">
-                         <div class="absolute top-0 left-1/2 -translate-x-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Compliments</div></div>
-                         <div class="absolute top-1/2 left-0 -translate-y-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Plan Fun</div></div>
-                         <div class="absolute top-1/2 right-0 -translate-y-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Agenda Items</div></div>
-                         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center"><div class="bg-[#C4DFE6] rounded-full p-2 text-xs font-bold">Brainstorm & Choose</div></div>
-                         <div class="absolute inset-0 flex items-center justify-center"><div class="w-48 h-48 border-4 border-dashed border-[#66A5AD] rounded-full flex items-center justify-center text-center p-4 font-bold text-[#07575B]">Solving Problems Together</div></div>
+        <section id="key-tools" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10 text-[#073B4C]">High-Impact Tools in Action</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+                <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col">
+                    <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#tool-1-the-family-meeting" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="font-bold text-2xl text-center text-[#073B4C] mb-4">The Family Meeting →</h3>
+                    </a>
+                    <p class="text-center text-slate-600 mb-6 flex-grow">The engine of Positive Discipline, this weekly ritual builds a shared family culture where every voice matters, which is crucial for a blended family.</p>
+                     <div class="space-y-4">
+                        <div class="flex items-start space-x-4"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#118AB2] text-white flex items-center justify-center font-bold text-lg">1</div><div><h4 class="font-semibold">Compliments</h4><p class="text-sm text-slate-500">Start on a positive note. Each person gives a genuine compliment to every other person.</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#06D6A0] text-white flex items-center justify-center font-bold text-lg">2</div><div><h4 class="font-semibold">Agenda Review</h4><p class="text-sm text-slate-500">Discuss items family members added to the agenda during the week.</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#FFD166] text-white flex items-center justify-center font-bold text-lg">3</div><div><h4 class="font-semibold">Collaborative Brainstorm</h4><p class="text-sm text-slate-500">Brainstorm solutions to agenda items. No bad ideas at this stage!</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#EF476F] text-white flex items-center justify-center font-bold text-lg">4</div><div><h4 class="font-semibold">Choose One Solution</h4><p class="text-sm text-slate-500">As a group, pick one respectful and reasonable solution to try for the week.</p></div></div>
+                        <div class="flex items-start space-x-4"><div class="flex-shrink-0 w-8 h-8 rounded-full bg-[#073B4C] text-white flex items-center justify-center font-bold text-lg">5</div><div><h4 class="font-semibold">Plan Family Fun</h4><p class="text-sm text-slate-500">End by scheduling a fun activity together, reinforcing connection.</p></div></div>
                      </div>
                 </div>
-                <div class="bg-white rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-4">Goal of Time-Out: Punishment vs. Self-Regulation</h3>
-                    <p class="text-sm text-gray-600 mb-4 text-center">This chart from your report shows the shift from a punitive time-out to a "Positive Time-Out" designed for calming down.</p>
-                    <div class="chart-container h-80">
-                        <canvas id="timeOutComparisonChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 4: Love & Logic Toolkit -->
-        <section id="love-logic" class="mb-16">
-             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-[#07575B] mb-2">Love & Logic: Responsibility Through Empathy</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto mb-4">This framework uses real-world outcomes as the teacher, allowing kids to learn from "affordable mistakes."</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iii-the-love-logic-framework-empowering-responsible-decision-makers" target="_blank" class="inline-block bg-[#003B46] text-white text-xs font-bold py-2 px-4 rounded-full hover:bg-[#07575B] transition-colors">READ THE LOVE & LOGIC REPORT</a>
-            </div>
-            <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
-                <h3 class="text-xl font-bold text-center text-[#66A5AD] mb-6">How to Respond to a Mistake</h3>
-                <p class="text-sm text-gray-600 mb-8 text-center">Follow this process to hand problems back to your child in a loving way.</p>
-                <div class="space-y-6">
-                    <div class="text-center"><div class="p-4 bg-gray-100 rounded-lg inline-block shadow-sm"><strong class="text-[#003B46]">1. Child Makes an "Affordable Mistake"</strong><p class="text-xs">(e.g., Forgets lunch, leaves toys out)</p></div></div>
-                    <div class="text-center text-2xl text-[#66A5AD] font-mono">&#8595;</div>
-                    <div class="text-center"><div class="p-4 bg-[#C4DFE6] rounded-lg inline-block shadow-sm"><strong class="text-[#003B46]">2. Respond with Sincere Empathy (Not Anger)</strong><p class="text-xs">"Oh, man, that's a bummer." or "This is so sad."</p></div></div>
-                    <div class="text-center text-2xl text-[#66A5AD] font-mono">&#8595;</div>
-                    <div class="text-center"><div class="p-4 bg-[#66A5AD] text-white rounded-lg inline-block shadow-sm"><strong class="text-white">3. Let the Consequence Teach the Lesson</strong></div></div>
-                    <div class="flex flex-col md:flex-row gap-4 justify-center text-center">
-                        <div class="flex-1 p-3 bg-gray-100 rounded-lg"><strong class="text-sm">Natural Consequence</strong><p class="text-xs">(e.g., Forgets jacket, feels cold)</p></div>
-                        <div class="font-bold text-gray-400 self-center">OR</div>
-                        <div class="flex-1 p-3 bg-gray-100 rounded-lg"><strong class="text-sm">Logical Consequence</strong><p class="text-xs">(e.g., Makes a mess, cleans it up)</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-2xl flex flex-col">
+                     <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-vi-synthesis-running-your-integrated-parenting-operating-system" target="_blank" rel="noopener noreferrer" class="section-link">
+                        <h3 class="font-bold text-2xl text-center text-[#073B4C] mb-4">Pillars of Blended Success →</h3>
+                    </a>
+                    <p class="text-center text-slate-600 mb-6 flex-grow">Success in a blended family hinges on more than just discipline techniques. It's built on a foundation of core commitments from the parental team.</p>
+                    <div class="chart-container h-[250px] md:h-[300px]">
+                        <canvas id="blendedPillarsDonutChart"></canvas>
+                    </div>
+                    <div class="mt-6 text-center text-sm text-slate-500">
+                        <strong class="text-[#118AB2]">Parental Alignment:</strong> Present a united front. Disagreements are resolved privately using NVC. This builds security.
+                        <br><br>
+                        <strong class="text-[#06D6A0]">Consistency:</strong> Predictability creates a safe and stable environment. Stick to the plan, even when it's hard.
+                        <br><br>
+                        <strong class="text-[#FFD166]">Patience:</strong> This is a long-term investment. The goal is not perfection, but connection and growth.
                     </div>
                 </div>
             </div>
         </section>
 
     </main>
-
-    <footer class="bg-[#003B46] text-center py-6 px-4 mt-16">
-        <p class="text-sm text-[#C3DFE0]">&copy; 2025 Blended Family Harmony. This infographic is a visual summary of the principles in 'The Practitioner's Guide.'</p>
+    <footer class="text-center py-6">
+        <p class="text-sm text-slate-400">&copy; 2025 The Integrated Family Operating System. All Rights Reserved.</p>
     </footer>
 
     <script>
-        const wrapLabel = (str) => {
-            const maxLength = 16;
-            if (str.length <= maxLength) {
-                return str;
-            }
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = '';
-            words.forEach(word => {
-                if ((currentLine + ' ' + word).length > maxLength && currentLine.length > 0) {
-                    lines.push(currentLine);
-                    currentLine = word;
+        document.addEventListener('DOMContentLoaded', function () {
+            const colors = {
+                navy: '#073B4C',
+                blue: '#118AB2',
+                green: '#06D6A0',
+                yellow: '#FFD166',
+                red: '#EF476F',
+                white: '#FFFFFF'
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
                 } else {
-                    currentLine = currentLine ? currentLine + ' ' + word : word;
+                  return label;
                 }
-            });
-            lines.push(currentLine);
-            return lines;
-        };
-
-        const tooltipTitleCallback = (tooltipItems) => {
-            const item = tooltipItems[0];
-            let label = item.chart.data.labels[item.dataIndex];
-            if (Array.isArray(label)) {
-              return label.join(' ');
-            } else {
-              return label;
-            }
-        };
-
-        const sharedChartOptions = {
-            maintainAspectRatio: false,
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom',
-                     labels: {
-                        font: { size: 12, family: 'Inter' },
-                        color: '#4A5568'
+            };
+            
+            const sharedTooltipOptions = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        },
+                        bodyFont: { size: 14 },
+                        titleFont: { size: 16, weight: 'bold' },
+                        padding: 12,
+                        backgroundColor: 'rgba(7, 59, 76, 0.9)',
+                        titleColor: colors.white,
+                        bodyColor: colors.white
                     }
-                },
-                tooltip: {
-                    callbacks: { title: tooltipTitleCallback },
-                    bodyFont: { family: 'Inter' },
-                    titleFont: { family: 'Inter' }
                 }
-            },
-            scales: {
-                x: {
-                    ticks: { color: '#4A5568', font: { family: 'Inter' } },
-                    grid: { display: false }
-                },
-                y: {
-                    ticks: { color: '#4A5568', font: { family: 'Inter' } },
-                    grid: { color: '#E2E8F0' }
-                }
-            }
-        };
+            };
 
-        // Chart 1: Time-Out Comparison Bar Chart
-        const ctx3 = document.getElementById('timeOutComparisonChart').getContext('2d');
-        new Chart(ctx3, {
-            type: 'bar',
-            data: {
-                labels: [wrapLabel('Teaches Self-Regulation'), wrapLabel('Builds Connection'), wrapLabel('Isolates Child'), wrapLabel('Child Feels Empowered')],
-                datasets: [{
-                    label: 'Punitive Time-Out',
-                    data: [2, 1, 9, 1],
-                    backgroundColor: '#07575B',
-                    borderRadius: 4
-                }, {
-                    label: 'Positive Time-Out',
-                    data: [9, 8, 1, 9],
-                    backgroundColor: '#66A5AD',
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                ...sharedChartOptions,
-                indexAxis: 'y',
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        max: 10,
-                        title: { display: true, text: 'Effectiveness Score (1-10)' }
-                    },
-                    y: { grid: { display: false } }
+            function wrapLabel(str, maxWidth = 16) {
+                if (str.length <= maxWidth) {
+                    return str;
                 }
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    } else {
+                        currentLine += ' ' + words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            }
+
+            const radarCtx = document.getElementById('frameworksRadarChart')?.getContext('2d');
+            if (radarCtx) {
+                const radarLabels = [
+                    'Proactive Focus', 
+                    'Ease of Use', 
+                    ['Builds', 'Connection'], 
+                    ['Manages Strong', 'Will'], 
+                    ['In-the-Moment', 'Tool']
+                ];
+                new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: radarLabels,
+                        datasets: [
+                            {
+                                label: 'NVC',
+                                data: [4, 2, 5, 5, 3],
+                                fill: true,
+                                backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                                borderColor: colors.blue,
+                                pointBackgroundColor: colors.blue,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.blue
+                            },
+                             {
+                                label: 'CPS',
+                                data: [5, 2, 4, 5, 1],
+                                fill: true,
+                                backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                                borderColor: colors.green,
+                                pointBackgroundColor: colors.green,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.green
+                            },
+                             {
+                                label: 'Love & Logic',
+                                data: [3, 4, 3, 4, 4],
+                                fill: true,
+                                backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                                borderColor: colors.yellow,
+                                pointBackgroundColor: colors.yellow,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.yellow
+                            },
+                            {
+                                label: '1-2-3 Magic',
+                                data: [1, 5, 1, 2, 5],
+                                fill: true,
+                                backgroundColor: 'rgba(239, 71, 111, 0.2)',
+                                borderColor: colors.red,
+                                pointBackgroundColor: colors.red,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.red
+                            }
+                        ]
+                    },
+                    options: {
+                        ...sharedTooltipOptions,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(7, 59, 76, 0.2)' },
+                                grid: { color: 'rgba(7, 59, 76, 0.2)' },
+                                pointLabels: { font: { size: 12, weight: '600' }, color: colors.navy },
+                                ticks: {
+                                    backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                    color: colors.navy,
+                                    stepSize: 1
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...sharedTooltipOptions.plugins,
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: { size: 14 },
+                                    color: colors.navy
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const donutCtx = document.getElementById('blendedPillarsDonutChart')?.getContext('2d');
+            if (donutCtx) {
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Parental Alignment', 'Consistency', 'Patience'],
+                        datasets: [{
+                            data: [50, 30, 20],
+                            backgroundColor: [
+                                colors.blue,
+                                colors.green,
+                                colors.yellow,
+                            ],
+                            borderColor: colors.white,
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        ...sharedTooltipOptions,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            ...sharedTooltipOptions.plugins,
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    color: colors.navy,
+                                    font: {
+                                        size: 14
+                                    },
+                                    padding: 20
+                                }
+                            }
+                        }
+                    }
+                });
             }
         });
-
     </script>
 </body>
 </html>

@@ -3,488 +3,415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Blended Family: Guidelines for Harmony</title>
+    <title>A Visual Guide to the Household Operating System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F7FAFC; 
+            color: #073B4C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        .flow-arrow {
+            width: 2px;
+            height: 1.5rem;
+            background-color: #94a3b8;
+            margin: 0.5rem auto;
+            position: relative;
+        }
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -1px;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #94a3b8;
+        }
+        .section-link {
+            transition: color 0.2s ease-in-out;
+            display: inline-block;
+        }
+        .section-link:hover {
+            color: #118AB2;
+            text-decoration: underline;
+        }
+        .clickable-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .clickable-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
 </head>
-<body class="palette-text-dark">
+<body class="bg-slate-50">
 
-    <!-- Infographic Section - Landing Page -->
-    <div id="infographic-page" class="page active">
-        <header class="palette-bg text-white text-center p-8 md:p-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold palette-text-light mb-2">Building Our Harmonious Home</h1>
-            <p class="text-lg md:text-xl max-w-3xl mx-auto">A visual guide to unity, respect, and love in our blended family.</p>
-            <div class="mt-8">
-                <!-- Link to the interactive guidelines section within this same HTML file -->
-                <a href="#" id="explore-interactive-btn" class="inline-block palette-accent-blue text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg">
-                    Explore Interactive Guidelines &#x27A1;
-                </a>
-            </div>
+    <main class="container mx-auto px-4 py-8 sm:py-12">
+
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#073B4C] leading-tight">The Household Operating System</h1>
+            <p class="text-lg md:text-xl text-[#118AB2] mt-2 max-w-3xl mx-auto">A Visual Guide to Cultivating Consistency, Respect, and Harmony in a Blended Family</p>
         </header>
 
-        <main class="container mx-auto p-4 md:p-8">
-            <section class="text-center my-12">
-                <h2 class="text-3xl font-bold mb-4">The Blended Family Journey</h2>
-                <p class="max-w-2xl mx-auto text-gray-600 mb-8">Creating a new family culture is a common challenge. In fact...</p>
-                <div class="bg-white p-8 rounded-2xl shadow-lg inline-block">
-                    <div class="text-7xl font-extrabold palette-accent-blue text-white rounded-full w-40 h-40 flex items-center justify-center mx-auto">70%</div>
-                    <p class="text-xl font-semibold mt-4">of blended families report disagreements<br>on parenting in the first two years.</p>
-                    <p class="text-sm text-gray-500 mt-2">Source: Step Family Foundation, Inc.</p>
-                </div>
-                <p class="max-w-2xl mx-auto text-gray-600 mt-8">That's why we—Diana and Josh—are building a unified approach, combining our strengths to create a stable, loving home for our five wonderful children.</p>
-                <a href="https://jockeys.github.io/household-guidelines/report/#i-introduction-forging-unity-in-your-blended-family" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
-                    Deep Dive into the Full Guidelines &#x27A1;
-                </a>
-            </section>
-
-            <section class="my-16">
-                <h2 class="text-3xl font-bold text-center mb-8">Our Foundation: A Unified Team</h2>
-                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
-                        <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
-                            <h3 class="text-xl font-bold mb-2">Diana's Approach</h3>
-                            <p class="text-gray-600">Structure, Routine & Clarity</p>
-                            <p class="text-sm text-gray-500">(from a Colombian upbringing)</p>
-                        </div>
-                        <div class="text-5xl font-bold text-gray-300 mx-4">+</div>
-                        <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-2xl">
-                            <h3 class="text-xl font-bold mb-2">Josh's Approach</h3>
-                            <p class="text-gray-600">Flexibility, Nurturing & Support</p>
-                            <p class="text-sm text-gray-500">(from a Pennsylvanian upbringing)</p>
-                        </div>
-                    </div>
-                    <div class="text-center text-5xl my-4 text-gray-300">&#x2193;</div>
-                    <div class="palette-accent-green text-white p-6 rounded-2xl text-center">
-                        <h3 class="text-2xl font-bold">Our Combined Authoritative Style</h3>
-                        <p class="mt-2">Balancing warmth and responsiveness with clear, reasonable expectations to raise respectful, responsible, and secure children.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="https://jockeys.github.io/household-guidelines/report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
-                        Deep Dive into the Full Guidelines &#x27A1;
-                    </a>
-                </div>
-            </section>
-
-            <section class="my-16">
-                <h2 class="text-3xl font-bold text-center mb-8">Our Parenting Toolkit</h2>
-                <p class="text-center max-w-2xl mx-auto text-gray-600 mb-8">We've adopted principles from three evidence-based frameworks to guide us. This gives us a shared playbook for responding to challenges consistently and effectively.</p>
-                <!-- CHANGE START: Added link to the frameworks infographic -->
-                <div class="text-center mb-8">
-                    <a href="https://jockeys.github.io/household-guidelines/frameworks" target="_blank" class="inline-block palette-accent-green text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-green-700 transition-colors duration-300 shadow-lg">
-                        View the Frameworks Infographic &#x1F4CA;
-                    </a>
-                </div>
-                <!-- CHANGE END -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                        <div class="text-5xl mb-4">🔢</div>
-                        <h3 class="text-xl font-bold mb-2">1-2-3 Magic</h3>
-                        <p class="text-gray-600">For clear, non-emotional discipline. When a "Stop" behavior occurs, we calmly count. This reduces arguing and helps us stay consistent.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                        <div class="text-5xl mb-4">🤝</div>
-                        <h3 class="text-xl font-bold mb-2">Positive Discipline</h3>
-                        <p class="text-gray-600">To be "kind but firm." We focus on long-term solutions, mutual respect, and involving children in problem-solving.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg text-center">
-                        <div class="text-5xl mb-4">💡</div>
-                        <h3 class="text-xl font-bold mb-2">Love & Logic</h3>
-                        <p class="text-gray-600">To empower kids through empathy and logical consequences. This teaches responsibility by linking choices to outcomes.</p>
-                    </div>
-                </div>
-                <div class="text-center mt-8">
-                    <a href="https://jockeys.github.io/household-guidelines/report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
-                        Deep Dive into the Full Guidelines &#x27A1;
-                    </a>
-                </div>
-            </section>
-
-            <section class="my-16">
-                <h2 class="text-3xl font-bold text-center mb-8">The Daily Blueprint: Rules & Routines</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-6">📱 Screen Time: Clear & Fair Limits</h3>
-                        <p class="text-gray-600 mb-4">Our screen time rules are based on recommendations to support healthy development. This is a great example of being "equitable, not equal." The goal is to prioritize play, reading, and family time.</p>
-                        <div class="chart-container">
-                            <canvas id="infographicScreenTimeChart"></canvas>
-                        </div>
-                        <a href="https://jockeys.github.io/household-guidelines/report/#c-screen-time-and-device-use" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
-                            Deep Dive into Screen Time Guidelines &#x27A1;
-                        </a>
-                    </div>
-
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-6">🌙 Evening Routine: Calm & Consistent</h3>
-                        <p class="text-gray-600 mb-6">Our wind-down sequence starts at 7:00 PM to ensure everyone is settled for an 8:00 PM bedtime. Predictability helps reduce resistance and improve sleep.</p>
-                        <div class="relative pl-12 infographic-timeline">
-                            <div class="infographic-timeline-item pb-8">
-                                <div class="infographic-timeline-dot palette-accent-yellow"><span class="text-2xl">🍽️</span></div>
-                                <h4 class="font-semibold text-lg pl-8">7:00 PM - Clean-Up</h4>
-                                <p class="text-gray-500 pl-8">All kids help clear their dishes. Screens turn off for the night.</p>
-                            </div>
-                            <div class="infographic-timeline-item pb-8">
-                                <div class="infographic-timeline-dot palette-accent-red"><span class="text-2xl">🚿</span></div>
-                                <h4 class="font-semibold text-lg pl-8">7:15 PM - Hygiene Time</h4>
-                                <p class="text-gray-500 pl-8">Showers/baths and brushing teeth.</p>
-                            </div>
-                            <div class="infographic-timeline-item pb-8">
-                                <div class="infographic-timeline-dot palette-accent-green"><span class="text-2xl">📖</span></div>
-                                <h4 class="font-semibold text-lg pl-8">7:45 PM - Wind-Down</h4>
-                                <p class="text-gray-500 pl-8">Quiet time with books or puzzles. No screens!</p>
-                            </div>
-                            <div class="infographic-timeline-item">
-                                <div class="infographic-timeline-dot palette-accent-blue"><span class="text-2xl">😴</span></div>
-                                <h4 class="font-semibold text-lg pl-8">8:00 PM - Lights Out</h4>
-                                <p class="text-gray-500 pl-8">Tuck-ins, cuddles, and goodnight wishes.</p>
-                            </div>
-                        </div>
-                        <a href="https://jockeys.github.io/household-guidelines/report/#d-bedtime-and-evening-routines" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
-                            Deep Dive into Evening Routines &#x27A1;
-                        </a>
-                    </div>
-
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">🍔 Mealtime Mantras</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-4">
-                                <span class="text-3xl">🧘</span>
-                                <div>
-                                    <h4 class="font-semibold">No Pressure to Eat</h4>
-                                    <p class="text-gray-600">We provide healthy food; kids decide how much. No force-feeding.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <span class="text-3xl">🚫</span>
-                                <div>
-                                    <h4 class="font-semibold">Screen-Free Zone</h4>
-                                    <p class="text-gray-600">This rule is for everyone, adults included, to encourage family connection.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <span class="text-3xl">✨</span>
-                                <div>
-                                    <h4 class="font-semibold">Clean Up Your Space</h4>
-                                    <p class="text-gray-600">Everyone is responsible for clearing their own plate from the table.</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="https://jockeys.github.io/household-guidelines/report/#a-food-and-mealtime-expectations" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
-                            Deep Dive into Mealtime Guidelines &#x27A1;
-                        </a>
-                    </div>
-
-                    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold mb-4">🧸 Toys & Property Rules</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-4">
-                                <span class="text-3xl">🔒</span>
-                                <div>
-                                    <h4 class="font-semibold">Respect Personal Items</h4>
-                                    <p class="text-gray-600">Special toys don't have to be shared. Always ask permission first.</p>
-                                </div>
-                            </li>
-                            <li class="flex items-start gap-4">
-                                <span class="text-3xl">🔄</span>
-                                <div>
-                                    <h4 class="font-semibold">Practice Turn-Taking</h4>
-                                    <p class="text-gray-600">Toys in common areas are for everyone. We use timers if needed.</p>
-                                </div>
-                            </li>
-                                <li class="flex items-start gap-4">
-                                <span class="text-3xl">👶</span>
-                                <div>
-                                    <h4 class="font-semibold">The Toddler "Trade"</h4>
-                                    <p class="text-gray-600">To interact with our 18-month-old, older kids can offer to trade a toy instead of taking one.</p>
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="https://jockeys.github.io/household-guidelines/report/#b-toys-personal-property-and-shared-spaces" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-4 hover:bg-blue-700 transition-colors duration-300">
-                            Deep Dive into Property Rules &#x27A1;
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="my-16 text-center">
-                <h2 class="text-3xl font-bold mb-8">Our Commitment as Partners</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="text-5xl mb-4">🤫</div>
-                        <h3 class="font-bold text-xl">Private Dialogue</h3>
-                        <p class="text-gray-600">We resolve disagreements away from the children to maintain a secure environment and our authority as a team.</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <div class="text-5xl mb-4">❤️</div>
-                        <h3 class="font-bold text-xl">United Front</h3>
-                        <p class="text-gray-600">We always back each other up. We use "we" language to show the children we are in this together, always.</p>
-                    </div>
-                </div>
-                <div class="palette-bg text-white mt-8 p-6 rounded-2xl max-w-4xl mx-auto">
-                    <h3 class="font-bold text-xl palette-text-light">This is a Living Document</h3>
-                    <p class="mt-2">Our family will grow and change, and so will these guidelines. We commit to regular check-ins to make sure they always serve our family's best interests.</p>
-                </div>
-                <a href="https://jockeys.github.io/household-guidelines/report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="inline-block palette-accent-blue text-white font-bold py-2 px-6 rounded-full text-sm mt-8 hover:bg-blue-700 transition-colors duration-300">
-                    Deep Dive into Partnership Guidelines &#x27A1;
-                </a>
-            </section>
-        </main>
-    </div>
-
-    <!-- Interactive App Section -->
-    <div id="interactive-app-page" class="page">
-        <header class="palette-bg text-white text-center p-4 md:p-6 flex items-center justify-between">
-            <!-- Link back to the infographic section within this same HTML file -->
-            <a href="#" id="back-to-infographic-btn" class="inline-block text-white font-bold py-2 px-4 rounded-full text-sm hover:bg-blue-700 transition-colors duration-300">
-                &#x2B05; Back to Infographic
+        <section id="principles" class="mb-16 md:mb-24">
+            <a href="https://jockeys.github.io/household-guidelines/report/#ii-foundational-principles-for-parental-alignment" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">Foundational Principles →</h2>
             </a>
-            <h2 class="text-2xl md:text-3xl font-bold palette-text-light flex-grow text-center">Our Interactive Household Guidelines</h2>
-            <div class="w-24 md:w-32"></div>
-        </header>
-        <div class="flex flex-col md:flex-row min-h-screen container mx-auto bg-white rounded-lg shadow-xl p-4 md:p-0 mt-8 md:mt-0">
-            <aside class="w-full md:w-64 bg-white p-4 md:p-6 rounded-lg md:rounded-none md:rounded-l-lg shadow-md md:shadow-none mb-8 md:mb-0 border-b md:border-b-0 md:border-r border-gray-200">
-                <h1 class="text-xl font-bold palette-text-dark mb-8 text-center hidden md:block">Family Guidelines</h1>
-                <nav id="interactive-sidebar-nav" class="space-y-2">
-                    <a href="#interactive-philosophy" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
-                        <span>&#x1F496;</span> Our Philosophy
-                    </a>
-                    <a href="#interactive-toolkit" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
-                        <span>&#x1F6E0;</span> Parenting Toolkit
-                    </a>
-                    <a href="#interactive-routines" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
-                        <span>&#x1F552;</span> Daily Routines
-                    </a>
-                    <a href="#interactive-rules" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
-                        <span>&#x1F4D6;</span> Household Rules
-                    </a>
-                    <a href="#interactive-partnership" class="interactive-sidebar-nav-item flex items-center gap-3 p-3 rounded-lg cursor-pointer text-gray-600 font-medium">
-                        <span>&#x1F91D;</span> Our Partnership
-                    </a>
-                </nav>
-            </aside>
-
-            <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
-                <nav id="interactive-mobile-nav" class="flex justify-around p-2">
-                    <a href="#interactive-philosophy" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F496;</span><span class="text-center">Philosophy</span></a>
-                    <a href="#interactive-toolkit" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F6E0;</span><span class="text-center">Toolkit</span></a>
-                    <a href="#interactive-routines" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F552;</span><span class="text-center">Routines</span></a>
-                    <a href="#interactive-rules" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F4D6;</span><span class="text-center">Rules</span></a>
-                    <a href="#interactive-partnership" class="interactive-mobile-nav-item flex flex-col items-center gap-1 text-gray-600 text-xs p-1"><span>&#x1F91D;</span><span class="text-center">Partners</span></a>
-                </nav>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">Success begins with a strong parental partnership. Our approach is built on three core pillars designed to create a stable and loving environment for everyone.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-4xl mb-3">🤝</div>
+                    <h3 class="text-xl font-bold text-[#073B4C]">Unified Front</h3>
+                    <p class="text-slate-500 mt-2">We resolve disagreements privately and present a consistent, team-oriented approach to the children.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-4xl mb-3">⚖️</div>
+                    <h3 class="text-xl font-bold text-[#073B4C]">Equitable Treatment</h3>
+                    <p class="text-slate-500 mt-2">We focus on fairness by meeting each child's individual needs, not by treating everyone identically.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-4xl mb-3">🗣️</div>
+                    <h3 class="text-xl font-bold text-[#073B4C]">Clear Communication</h3>
+                    <p class="text-slate-500 mt-2">We use a shared language (NVC) to express ourselves and listen with empathy, fostering understanding.</p>
+                </div>
             </div>
+        </section>
 
-            <main class="flex-1 p-4 sm:p-6 md:p-8 pb-20 md:pb-8">
-                <section id="interactive-philosophy" class="interactive-content-section space-y-8">
-                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Philosophy: A Unified Front</h2>
-                    <a href="https://jockeys.github.io/household-guidelines/report/#ii-foundational-principles-for-parental-alignment" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
-                    <p class="text-gray-600">This section outlines our core beliefs about creating a stable, loving, and consistent home. It's about blending our individual strengths—Diana's value for structure and Josh's nurturing flexibility—to create a unified parenting approach that benefits all our children.</p>
+        <section id="os-overview" class="mb-16 md:mb-24 bg-white p-6 sm:p-10 rounded-2xl shadow-2xl">
+            <a href="https://jockeys.github.io/household-guidelines/report/#iii-the-integrated-family-operating-system-a-multi-layered-approach" target="_blank" rel="noopener noreferrer" class="section-link">
+                 <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">The Integrated OS →</h2>
+            </a>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-6">Our parenting strategy is a multi-layered system, not just a single approach. Each layer provides the right tool for the right situation.</p>
+            <div class="text-center mb-10">
+                <a href="https://jockeys.github.io/household-guidelines/frameworks" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#118AB2] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-[#06D6A0] transition-colors duration-300">
+                    View the Detailed Frameworks Infographic →
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 border-l-4 border-[#118AB2] bg-slate-50 rounded-r-lg">
+                    <h3 class="font-bold text-lg text-[#118AB2]">Foundation Layer</h3>
+                    <p class="text-sm text-slate-600">Nonviolent Communication (NVC) is how we talk to each other to build connection.</p>
+                </div>
+                <div class="p-4 border-l-4 border-[#06D6A0] bg-slate-50 rounded-r-lg">
+                    <h3 class="font-bold text-lg text-[#06D6A0]">Proactive Layer</h3>
+                    <p class="text-sm text-slate-600">Collaborative & Proactive Solutions (CPS) is how we solve recurring problems together.</p>
+                </div>
+                <div class="p-4 border-l-4 border-[#FFD166] bg-slate-50 rounded-r-lg">
+                    <h3 class="font-bold text-lg text-[#FFD166]">Daily & Relational Layer</h3>
+                    <p class="text-sm text-slate-600">Love & Logic and Positive Discipline are how we manage daily life and build skills.</p>
+                </div>
+                <div class="p-4 border-l-4 border-[#EF476F] bg-slate-50 rounded-r-lg">
+                    <h3 class="font-bold text-lg text-[#EF476F]">Emergency Layer</h3>
+                    <p class="text-sm text-slate-600">1-2-3 Magic is how we stop immediate safety risks. Used sparingly.</p>
+                </div>
+            </div>
+        </section>
 
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">Harmonizing Our Parenting Styles</h3>
-                        <p class="mb-6 text-gray-600">Our strength lies in combining our unique perspectives. By understanding the cultural and personal backgrounds that shape our parenting styles, we can create a new, shared family culture built on empathy and respect.</p>
-                        <div class="grid md:grid-cols-3 gap-6 items-center">
-                            <div class="text-center p-4 bg-white rounded-lg">
-                                <h4 class="font-bold text-lg">Diana's Approach</h4>
-                                <p class="text-sm text-gray-600">(From Colombian Heritage)</p>
-                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
-                                    <li>Structure & Routine</li>
-                                    <li>Clear, Firm Rules</li>
-                                    <li>Healthy Habits</li>
-                                    <li>Tidiness</li>
-                                </ul>
-                            </div>
-                            <div class="text-center text-4xl text-gray-400 font-bold">+</div>
-                            <div class="text-center p-4 bg-white rounded-lg">
-                                <h4 class="font-bold text-lg">Josh's Approach</h4>
-                                <p class="text-sm text-gray-600">(From Pennsylvanian Roots)</p>
-                                <ul class="text-left mt-2 space-y-1 text-sm list-disc list-inside">
-                                    <li>Flexibility</li>
-                                    <li>Nurturing Care</li>
-                                    <li>Emotional Connection</li>
-                                    <li>Consistency through Support</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-center">
-                            <span class="text-4xl text-gray-400">&#x2193;</span>
-                            <div class="mt-4 p-6 bg-blue-500 text-white rounded-lg">
-                                <h4 class="font-bold text-xl">Our Unified Authoritative Style</h4>
-                                <p class="mt-2">We balance warmth and responsiveness with clear, reasonable expectations. Our goal is to model teamwork and raise children who are respectful, responsible, and secure.</p>
-                            </div>
+        <section id="decision-tree" class="mb-16 md:mb-24">
+             <a href="https://jockeys.github.io/household-guidelines/report/#the-decision-tree-choosing-the-right-tool-for-the-job" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">The Decision-Making Engine →</h2>
+            </a>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-10">When a challenge arises, this flowchart guides us to the most effective response from our OS.</p>
+            <div class="w-full max-w-2xl mx-auto flex flex-col items-center">
+                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#073B4C] w-full sm:w-3/4">
+                    <p class="font-bold text-lg">A Challenge Occurs</p>
+                </div>
+                <div class="flow-arrow"></div>
+                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#118AB2] w-full sm:w-3/4">
+                    <p class="font-semibold text-lg text-[#118AB2]">Is this an immediate SAFETY risk?</p>
+                </div>
+                <div class="w-full mt-4 bg-slate-100/70 p-4 rounded-xl shadow-inner">
+                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex-shrink-0 bg-[#EF476F] text-white font-bold px-3 py-1 rounded-full">YES</div>
+                        <div class="flex-grow">
+                            <p class="font-semibold text-slate-700">If there is a safety risk, use the...</p>
+                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-v-the-emergency-boundary-layer-1-2-3-magic" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#EF476F]">
+                                    <h4 class="font-bold text-lg text-[#EF476F]">Emergency Layer →</h4>
+                                    <p class="text-sm text-slate-500">1-2-3 Magic</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">Fairness vs. Sameness</h3>
-                        <p class="text-gray-600">In our family, fairness means equitable treatment, not identical treatment. We recognize that our five children have different ages, needs, and developmental stages. Our rules and expectations will reflect this, with the reasons for any differences explained clearly and lovingly to the children. This approach ensures each child feels seen and understood, preventing feelings of favoritism and eliminating double standards.</p>
-                    </div>
-                </section>
-
-                <section id="interactive-toolkit" class="interactive-content-section space-y-8">
-                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Parenting Toolkit</h2>
-                    <a href="https://jockeys.github.io/household-guidelines/report/#iii-integrating-evidence-based-parenting-frameworks" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
-                    <!-- CHANGE START: Added link to the frameworks infographic -->
-                    <div class="text-center my-4">
-                        <a href="https://jockeys.github.io/household-guidelines/frameworks" target="_blank" class="inline-block palette-accent-green text-white font-bold py-3 px-6 rounded-full text-base hover:bg-green-700 transition-colors duration-300 shadow-lg">
-                            View the Frameworks Infographic &#x1F4CA;
-                        </a>
-                    </div>
-                    <!-- CHANGE END -->
-                    <p class="text-gray-600">Here are the evidence-based frameworks we've agreed to integrate. Think of these as our shared "playbook" for responding to challenges consistently and effectively. Click on each card to learn more about the core principles and techniques.</p>
-                    <div id="interactive-framework-container" class="space-y-4">
-                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
-                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
-                                <h3 class="text-xl font-semibold">1-2-3 Magic</h3>
-                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
-                            </div>
-                            <div class="interactive-framework-content px-4 text-gray-600">
-                                <p class="font-medium text-gray-800 mb-2">Focus: Simple, consistent discipline for "Stop" and "Start" behaviors.</p>
-                                <p>This provides a clear, non-emotional structure for managing unwanted behaviors like whining or arguing. It helps us remain calm and consistent.</p>
-                                <ul class="list-disc list-inside mt-2 space-y-1">
-                                    <li><strong>Counting Technique:</strong> Calmly say "That's 1," "That's 2," then "That's 3" for stop behaviors.</li>
-                                    <li><strong>Consequence:</strong> After "3," implement a brief, pre-determined time-out (1 min per year of age) or removal of a privilege.</li>
-                                    <li><strong>No Arguing:</strong> The key is to avoid talking, yelling, or explaining during the counting process.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
-                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
-                                <h3 class="text-xl font-semibold">Positive Discipline</h3>
-                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
-                            </div>
-                            <div class="interactive-framework-content px-4 text-gray-600">
-                                <p class="font-medium text-gray-800 mb-2">Focus: Fostering self-control, responsibility, and mutual respect.</p>
-                                <p>This approach is about being "kind and firm" at the same time. It builds long-term skills and strengthens our emotional connection with the children.</p>
-                                <ul class="list-disc list-inside mt-2 space-y-1">
-                                    <li><strong>Kind and Firm:</strong> Set clear limits with respect and empathy.</li>
-                                    <li><strong>Family Meetings:</strong> Involve children in problem-solving and rule-setting.</li>
-                                    <li><strong>Focus on Solutions:</strong> Instead of punishment, we work together to find solutions to problems.</li>
-                                    <li><strong>Encouragement:</strong> Notice and praise effort and improvement, not just success.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="interactive-framework-card bg-gray-50 rounded-xl shadow-sm">
-                            <div class="interactive-framework-header flex justify-between items-center p-4 cursor-pointer">
-                                <h3 class="text-xl font-semibold">Love & Logic</h3>
-                                <span class="text-2xl text-gray-400 transform transition-transform">&#x25B8;</span>
-                            </div>
-                            <div class="interactive-framework-content px-4 text-gray-600">
-                                <p class="font-medium text-gray-800 mb-2">Focus: Empowering children through empathy and logical consequences.</p>
-                                <p>This framework teaches children responsibility by allowing them to experience the natural outcomes of their choices in a safe environment.</p>
-                                <ul class="list-disc list-inside mt-2 space-y-1">
-                                    <li><strong>Empathy First:</strong> Always respond with empathy ("Oh man, that's a bummer...") before delivering a consequence.</li>
-                                    <li><strong>Logical Consequences:</strong> The consequence should be directly related to the misbehavior. (e.g., "If you don't put away your toys, you lose the privilege of playing with them tomorrow.")</li>
-                                    <li><strong>Offer Choices:</strong> Give children choices within limits we control. (e.g., "Do you want to wear your red pajamas or your blue ones?")</li>
-                                </ul>
+                    <hr class="my-4 border-slate-300">
+                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex-shrink-0 bg-[#118AB2] text-white font-bold px-3 py-1 rounded-full">NO</div>
+                        <div class="flex-grow w-full">
+                            <p class="font-semibold text-slate-700">If there is no safety risk, ask...</p>
+                            <div class="mt-2 pl-0 sm:pl-6">
+                                <div class="bg-white p-4 rounded-xl shadow-lg text-center border-2 border-[#118AB2] w-full">
+                                    <p class="font-semibold text-lg text-[#118AB2]">Is it a RECURRING problem?</p>
+                                </div>
+                                <div class="w-full mt-4 bg-slate-200/70 p-4 rounded-xl shadow-inner">
+                                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-shrink-0 bg-[#06D6A0] text-white font-bold px-3 py-1 rounded-full">YES</div>
+                                        <div class="flex-grow">
+                                            <p class="font-semibold text-slate-700">If recurring, use the...</p>
+                                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-ii-the-proactive-problem-solving-layer-collaborative-proactive-solutions-cps" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#06D6A0]">
+                                                    <h4 class="font-bold text-lg text-[#06D6A0]">Proactive Layer →</h4>
+                                                    <p class="text-sm text-slate-500">CPS Plan B (at calm time)</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <hr class="my-4 border-slate-300">
+                                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
+                                        <div class="flex-shrink-0 bg-[#118AB2] text-white font-bold px-3 py-1 rounded-full">NO</div>
+                                        <div class="flex-grow">
+                                            <p class="font-semibold text-slate-700">If not recurring, use the...</p>
+                                            <a href="https://jockeys.github.io/household-guidelines/report/frameworks/#part-iii-the-daily-management-layer-love-logic" target="_blank" rel="noopener noreferrer" class="block clickable-card">
+                                                <div class="mt-2 bg-white p-3 rounded-lg shadow border-l-4 border-[#FFD166]">
+                                                    <h4 class="font-bold text-lg text-[#FFD166]">Daily & Relational Layer →</h4>
+                                                    <p class="text-sm text-slate-500">Love & Logic / Positive Discipline</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
-                <section id="interactive-routines" class="interactive-content-section space-y-8">
-                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Daily Routines</h2>
-                    <a href="https://jockeys.github.io/household-guidelines/report/#d-bedtime-and-evening-routines" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
-                    <p class="text-gray-600">Consistent routines create predictability and security, helping our days run more smoothly. Here are our agreed-upon guidelines for mealtimes and evenings.</p>
+        <section id="guidelines" class="mb-16 md:mb-24">
+            <a href="https://jockeys.github.io/household-guidelines/report/#iv-comprehensive-household-guidelines-key-areas" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-10 text-[#073B4C]">Key Household Guidelines →</h2>
+            </a>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <a href="https://jockeys.github.io/household-guidelines/report/#a-food-and-mealtime-expectations" target="_blank" rel="noopener noreferrer" class="block bg-white p-4 rounded-xl shadow-lg clickable-card">
+                    <div class="text-5xl mb-3">🍎</div>
+                    <h3 class="font-bold text-[#073B4C]">Food & Mealtimes</h3>
+                </a>
+                <a href="https://jockeys.github.io/household-guidelines/report/#b-toys-personal-property-and-shared-spaces" target="_blank" rel="noopener noreferrer" class="block bg-white p-4 rounded-xl shadow-lg clickable-card">
+                    <div class="text-5xl mb-3">🧸</div>
+                    <h3 class="font-bold text-[#073B4C]">Toys & Spaces</h3>
+                </a>
+                <a href="https://jockeys.github.io/household-guidelines/report/#c-screen-time-and-device-use" target="_blank" rel="noopener noreferrer" class="block bg-white p-4 rounded-xl shadow-lg clickable-card">
+                    <div class="text-5xl mb-3">📱</div>
+                    <h3 class="font-bold text-[#073B4C]">Screen Time</h3>
+                </a>
+                 <a href="https://jockeys.github.io/household-guidelines/report/#d-bedtime-and-evening-routines" target="_blank" rel="noopener noreferrer" class="block bg-white p-4 rounded-xl shadow-lg clickable-card">
+                    <div class="text-5xl mb-3">🌙</div>
+                    <h3 class="font-bold text-[#073B4C]">Bedtime Routines</h3>
+                </a>
+            </div>
+        </section>
 
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">🍽️ Mealtime Expectations</h3>
-                        <ul class="space-y-3 text-gray-600 list-disc list-inside">
-                            <li><strong>No Pressure:</strong> We provide healthy food; kids decide how much to eat. We won't force-feed. A simple, standard "backup" (like cereal or toast) is available if they genuinely dislike the meal.</li>
-                            <li><strong>One Meal for All:</strong> We do not act as short-order cooks.</li>
-                            <li><strong>Screen-Free Zone:</strong> No phones, tablets, or TV during meals for anyone, including adults.</li>
-                            <li><strong>Tidiness:</strong> Everyone is responsible for clearing their own plate and helping to wipe the table.</li>
-                            <li><strong>Positive Attitude:</strong> We don't complain about the food. If there's an issue, we discuss it calmly.</li>
-                        </ul>
-                    </div>
+        <section id="conclusion" class="mb-16 md:mb-24">
+            <a href="https://jockeys.github.io/household-guidelines/report/#vii-conclusions-and-recommendations" target="_blank" rel="noopener noreferrer" class="section-link">
+                <h2 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">Core Commitments for Success →</h2>
+            </a>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-10">The OS is only as strong as our commitment to it. These three pillars guide our long-term success as a family.</p>
+            <div class="bg-white p-6 rounded-2xl shadow-2xl">
+                <div class="chart-container">
+                    <canvas id="pillarsDonutChart"></canvas>
+                </div>
+            </div>
+        </section>
 
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">🌙 Evening Routine (8:00 PM Bedtime)</h3>
-                        <p class="text-gray-600 mb-6">Our evening routine is designed to be a calm, predictable transition to sleep. Consistency is key.</p>
-                        <div class="relative pl-8 interactive-timeline">
-                            <div class="relative pb-8">
-                                <div class="interactive-timeline-item-dot"><span>1</span></div>
-                                <h4 class="font-semibold">7:00 PM: Evening Prep</h4>
-                                <p class="text-sm text-gray-600">Dinner clean-up. All children help clear dishes. Screens are turned off for the night.</p>
-                            </div>
-                            <div class="relative pb-8">
-                                <div class="interactive-timeline-item-dot"><span>2</span></div>
-                                <h4 class="font-semibold">7:15 PM: Hygiene Time</h4>
-                                <p class="text-sm text-gray-600">Showers or baths, followed by putting on pajamas and brushing teeth.</p>
-                            </div>
-                            <div class="relative pb-8">
-                                <div class="interactive-timeline-item-dot"><span>3</span></div>
-                                <h4 class="font-semibold">7:45 PM: Wind-Down</h4>
-                                <p class="text-sm text-gray-600">Quiet, calm activities. Reading books, puzzles, drawing, or quiet conversation. Lights are dimmed.</p>
-                            </div>
-                            <div class="relative">
-                                <div class="interactive-timeline-item-dot"><span>4</span></div>
-                                <h4 class="font-semibold">8:00 PM: Lights Out</h4>
-                                <p class="text-sm text-gray-600">Tuck-ins, cuddles, and consistent goodnight phrases. All children are in their beds for the night.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+    </main>
+    <footer class="text-center py-6">
+        <p class="text-sm text-slate-400">&copy; 2025 The Integrated Family Operating System. All Rights Reserved.</p>
+    </footer>
 
-                <section id="interactive-rules" class="interactive-content-section space-y-8">
-                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Household Rules</h2>
-                    <a href="https://jockeys.github.io/household-guidelines/report/#iv-comprehensive-household-guidelines-key-areas" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
-                    <p class="text-gray-600">Clear rules create a respectful and safe environment for everyone. These guidelines cover personal property and screen time, and are applied equitably based on age and developmental needs.</p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const colors = {
+                navy: '#073B4C',
+                blue: '#118AB2',
+                green: '#06D6A0',
+                yellow: '#FFD166',
+                red: '#EF476F',
+                white: '#FFFFFF'
+            };
 
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">🧸 Toys, Property & Shared Spaces</h3>
-                        <ul class="space-y-4 text-gray-600 list-disc list-inside">
-                            <li><strong>Personal Items:</strong> Children are not forced to share their special personal toys. Respect for ownership is taught. "If it's not yours, ask before you use it."</li>
-                            <li><strong>Communal Items:</strong> Toys in common areas are for everyone, and we practice turn-taking. Timers can be used if needed.</li>
-                            <li><strong>Toddler Interactions:</strong> For the 18-month-old, we use redirection ("That's sister's, let's play with this instead."). Older kids are taught to "trade" a toy if they want what the toddler has.</li>
-                            <li><strong>Clean-Up Rule:</strong> We clean up one activity before starting another. Everyone is responsible for putting their things away in common areas.</li>
-                            <li><strong>Privacy:</strong> We knock on closed bedroom doors before entering.</li>
-                        </ul>
-                    </div>
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                  return label.join(' ');
+                } else {
+                  return label;
+                }
+            };
+            
+            const sharedTooltipOptions = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                           title: tooltipTitleCallback
+                        },
+                        bodyFont: { size: 14 },
+                        titleFont: { size: 16, weight: 'bold' },
+                        padding: 12,
+                        backgroundColor: 'rgba(7, 59, 76, 0.9)',
+                        titleColor: colors.white,
+                        bodyColor: colors.white
+                    }
+                }
+            };
 
-                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 class="text-xl font-semibold mb-4">📱 Screen Time Limits</h3>
-                        <p class="text-gray-600 mb-6">Our screen time rules are based on recommendations from the American Academy of Pediatrics to support healthy development. Hover over the bars for more details.</p>
-                        <div class="chart-container">
-                            <canvas id="interactiveScreenTimeChart"></canvas>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="interactive-partnership" class="interactive-content-section space-y-8">
-                    <h2 class="text-3xl font-bold border-b-2 border-gray-300 pb-2">Our Partnership: The Foundation</h2>
-                    <a href="https://jockeys.github.io/household-guidelines/report/#v-parental-leadership-and-conflict-resolution" target="_blank" class="text-sm deep-dive-link mb-4 block">Read More in the Full Report &#x27A1;</a>
-                    <p class="text-gray-600">Our strength as a couple is the foundation of our family's stability. These principles guide our interactions and decision-making, ensuring we operate as a supportive and unified team.</p>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-xl font-semibold mb-4">Shared Decision-Making</h3>
-                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
-                                <li><strong>United Front:</strong> We will always back each other up in front of the children. Disagreements are discussed and resolved in private.</li>
-                                <li><strong>Defined Roles:</strong> The biological parent takes the lead on discipline for their children, with the stepparent acting as a supportive ally.</li>
-                                <li><strong>Compromise:</strong> We commit to finding mutually agreeable solutions, blending our perspectives for the good of the whole family.</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-xl shadow-sm border border-gray-200">
-                            <h3 class="text-xl font-semibold mb-4">Conflict Resolution & Review</h3>
-                            <ul class="space-y-2 text-gray-600 list-disc list-inside">
-                                <li><strong>Private Dialogue:</strong> All adult conflicts are handled away from the children to maintain our authority and their sense of security.</li>
-                                <li><strong>"I" Statements:</strong> We express our feelings without blame (e.g., "I feel frustrated when...").</li>
-                                <li><strong>Regular Check-ins:</strong> We will have weekly "alignment talks" to review what's working, discuss challenges, and adapt these guidelines as needed.</li>
-                                <li><strong>Living Document:</strong> These guidelines are not set in stone. We will revise them together as our children grow and our family evolves.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div>
-
-    <!-- Link to external JavaScript file -->
-    <script src="script.js"></script>
+            const radarCtx = document.getElementById('frameworksRadarChart')?.getContext('2d');
+            if (radarCtx) {
+                const radarLabels = [
+                    'Proactive Focus', 
+                    'Ease of Use', 
+                    ['Builds', 'Connection'], 
+                    ['Manages Strong', 'Will'], 
+                    ['In-the-Moment', 'Tool']
+                ];
+                new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: radarLabels,
+                        datasets: [
+                            {
+                                label: 'NVC',
+                                data: [4, 2, 5, 5, 3],
+                                fill: true,
+                                backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                                borderColor: colors.blue,
+                                pointBackgroundColor: colors.blue,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.blue
+                            },
+                             {
+                                label: 'CPS',
+                                data: [5, 2, 4, 5, 1],
+                                fill: true,
+                                backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                                borderColor: colors.green,
+                                pointBackgroundColor: colors.green,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.green
+                            },
+                             {
+                                label: 'Love & Logic',
+                                data: [3, 4, 3, 4, 4],
+                                fill: true,
+                                backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                                borderColor: colors.yellow,
+                                pointBackgroundColor: colors.yellow,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.yellow
+                            },
+                            {
+                                label: '1-2-3 Magic',
+                                data: [1, 5, 1, 2, 5],
+                                fill: true,
+                                backgroundColor: 'rgba(239, 71, 111, 0.2)',
+                                borderColor: colors.red,
+                                pointBackgroundColor: colors.red,
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: colors.red
+                            }
+                        ]
+                    },
+                    options: {
+                        ...sharedTooltipOptions,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: { color: 'rgba(7, 59, 76, 0.2)' },
+                                grid: { color: 'rgba(7, 59, 76, 0.2)' },
+                                pointLabels: { font: { size: 12, weight: '600' }, color: colors.navy },
+                                ticks: {
+                                    backdropColor: 'rgba(255, 255, 255, 0.75)',
+                                    color: colors.navy,
+                                    stepSize: 1
+                                }
+                            }
+                        },
+                        plugins: {
+                            ...sharedTooltipOptions.plugins,
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: { size: 14 },
+                                    color: colors.navy
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const donutCtx = document.getElementById('pillarsDonutChart')?.getContext('2d');
+            if (donutCtx) {
+                new Chart(donutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Parental Alignment', 'Consistency', 'Patience'],
+                        datasets: [{
+                            label: 'Importance',
+                            data: [50, 30, 20],
+                            backgroundColor: [
+                                colors.blue,
+                                colors.green,
+                                colors.yellow,
+                            ],
+                            borderColor: colors.white,
+                            borderWidth: 4,
+                            hoverOffset: 8
+                        }]
+                    },
+                    options: {
+                        ...sharedTooltipOptions,
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '65%',
+                        plugins: {
+                            ...sharedTooltipOptions.plugins,
+                            legend: {
+                                display: true,
+                                position: 'bottom',
+                                labels: {
+                                    color: colors.navy,
+                                    font: {
+                                        size: 14
+                                    },
+                                    padding: 20
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Pillars of Success',
+                                font: {
+                                    size: 18,
+                                    weight: 'bold'
+                                },
+                                color: colors.navy,
+                                padding: {
+                                    bottom: 20
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
